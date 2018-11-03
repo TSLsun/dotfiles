@@ -14,10 +14,17 @@ Plugin 'gmarik/vundle'
 
 " Plugins:
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
 
+" YouCompleteMe settings"
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+
+" nerdtree settings"
+map <C-n> :NERDTreeToggle<CR> 
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 filetype plugin indent on     " required
 
@@ -51,6 +58,11 @@ set expandtab  	        " 將文件中的tab轉成space顯示
 set backspace=2         " Insert mode 才能刪東西
 set tabstop=4 	        " tab換成幾個空格
 set shiftwidth=4        " 自動縮排時的空格數量
+
+" powerline settings
+set rtp+=/anaconda3/lib/python3.6/site-packages/powerline/bindings/vim/
+set laststatus=2
+set t_Co=256
 
 inoremap ( ()<Esc>i
 inoremap " ""<Esc>i
