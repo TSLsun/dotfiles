@@ -29,3 +29,9 @@ Launch `vim` and run `:PluginInstall`
 ## tmux
 
 **tmux.conf**
+
+## zsh
+
+**zshrc**
+
+**aliases**
