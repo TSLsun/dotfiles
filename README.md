@@ -1,37 +1,24 @@
 # dotfiles
-my dotfiles settings
+my dotfiles backup
 
 ## vim
 
-**1. plain.vimrc:** when git not allowed to use
+[vim setup details](https://github.com/TSLsun/macOS_settings/blob/master/vim-setup.md)
 
-```
-mkdir .vim
-mkdir .vim/colors
-wget -O .vim/colors/Tomorrow-Night-Bright.vim https://raw.githubusercontent.com/chriskempson/tomorrow-theme/master/vim/colors/Tomorrow-Night-Bright.vim
-wget -O .vimrc https://raw.githubusercontent.com/TSLsun/dotfiles/master/vim/plain.vimrc
-```
+**1. plain.vimrc** 
 
 **2. vimrc** 
 
-Install `Vundle` by `git`: [vundle](https://github.com/VundleVim/Vundle.vim)
-	
-```	
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-```
-
-Install Plugins:
-
-Launch `vim` and run `:PluginInstall`
-
-[YouCompleteMe](http://valloric.github.io/YouCompleteMe/#mac-os-x)
-
 ## tmux
 
-**tmux.conf**
+[tmux setup details](https://github.com/TSLsun/macOS_settings/blob/master/tmux-setup.md)
+
+**1. tmux.conf**
 
 ## zsh
 
-**zshrc**
+[zsh setup details](https://github.com/TSLsun/macOS_settings/blob/master/zsh-setup.md)
 
-**aliases**
+**1. zshrc**
+
+**2. aliases**
