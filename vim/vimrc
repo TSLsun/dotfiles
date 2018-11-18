@@ -15,16 +15,25 @@ Plugin 'gmarik/vundle'
 " Plugins:
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
+Plugin 'junegunn/fzf'
+Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'tpope/vim-fugitive'
+
 
 " YouCompleteMe settings"
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/anaconda3/bin/python'
 
 " nerdtree settings"
 map <C-n> :NERDTreeToggle<CR> 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" fzf settings"
+map <C-p> :FZF<CR>
+
 
 filetype plugin indent on     " required
 
