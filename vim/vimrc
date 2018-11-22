@@ -13,26 +13,59 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 " Plugins:
+
+"  Gernal extension plugins
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'junegunn/fzf'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
-Plugin 'junegunn/fzf'
-Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-repeat'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'majutsushi/tagbar'
 "Plugin 'tpope/vim-fugitive'
 
+" Markdown plugins
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'iamcco/markdown-preview.vim'
 
 " YouCompleteMe settings"
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
-let g:ycm_path_to_python_interpreter = '/anaconda3/bin/python'
+let g:ycm_path_to_python_interpreter='/usr/local/Cellar/python/3.7.1/bin/python3'
+let g:ycm_python_binary_path = '/anaconda3/bin/python3'
+let g:ycm_python_binary_path = '/anaconda3/envs/DataScience/bin/python3'
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+let g:ycm_autoclose_preview_window_after_completion = 1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"python with virtualenv support
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " nerdtree settings"
 map <C-n> :NERDTreeToggle<CR> 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeNodeDelimiter = "\t"
 
 " fzf settings"
 map <C-p> :FZF<CR>
+
+" tagbar settings"
+" need to installed ctags
+" let g:tagbar_ctags_bin = ''
+"nmap <F8> :TagbarToggle<CR>
+
+" vim-markdown settings"
+"let g:vim_markdown_folding_disabled = 1
+
 
 
 filetype plugin indent on     " required
@@ -67,6 +100,12 @@ set expandtab  	        " 將文件中的tab轉成space顯示
 set backspace=2         " Insert mode 才能刪東西
 set tabstop=4 	        " tab換成幾個空格
 set shiftwidth=4        " 自動縮排時的空格數量
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+" Enable folding with the spacebar
+nnoremap <space> za
 
 " powerline settings
 set rtp+=/anaconda3/lib/python3.6/site-packages/powerline/bindings/vim/
