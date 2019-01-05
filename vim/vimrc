@@ -21,8 +21,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'Yggdroot/indentLine'
+Plugin 'majutsushi/tagbar'
 "Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'majutsushi/tagbar'
 "Plugin 'tpope/vim-fugitive'
 
 " Markdown plugins
@@ -60,8 +61,8 @@ map <C-p> :FZF<CR>
 
 " tagbar settings"
 " need to installed ctags
-" let g:tagbar_ctags_bin = ''
-"nmap <F8> :TagbarToggle<CR>
+ let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+nmap <F8> :TagbarToggle<CR>
 
 " vim-markdown settings"
 "let g:vim_markdown_folding_disabled = 1
@@ -106,6 +107,9 @@ set foldmethod=indent
 set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
+
+" :set paste toggle
+set pastetoggle=<leader>p
 
 " powerline settings
 set rtp+=/anaconda3/lib/python3.6/site-packages/powerline/bindings/vim/
