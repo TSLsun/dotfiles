@@ -11,10 +11,10 @@ call vundle#rc()
 "call vundle#rc(path)
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 """ Plugins:
-Plugin 'davidhalter/jedi-vim' 
+"Plugin 'davidhalter/jedi-vim' 
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter' 
 Plugin 'tpope/vim-surround'
