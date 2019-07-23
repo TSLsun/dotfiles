@@ -1,9 +1,3 @@
-""" vundle - plugins settings
-set nocompatible              " be iMproved, required
-filetype off                  " required
-filetype plugin indent on     " required
-
-" Put your stuff after this line
 syntax on    	        " 語法上色
 
 set mouse=a
