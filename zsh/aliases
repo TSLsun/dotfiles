@@ -2,16 +2,22 @@
 alias vi='vim'
 alias gdrive='cd ~/Google\ 雲端硬碟/'
 alias study='cd ~/Google\ 雲端硬碟/Study_cloud/;pwd'
-alias r07='cd ~/Google\ 雲端硬碟/Study_cloud/碩一上'
+alias r07='cd ~/Google\ 雲端硬碟/Study_cloud/碩二上'
 alias research='cd ~/Google\ 雲端硬碟/Study_cloud/研究'
 alias genome='cd ~/Google\ 雲端硬碟/Study_cloud/研究/Bio-MGI/AI/Genome'
 alias dbox='cd ~/Dropbox/'
-alias .4='ssh tslsun025@140.112.13.4'
-alias .226='ssh tslsun025@140.112.13.226'
+#alias .4='ssh tslsun025@140.112.13.4'
+alias .101='ssh tslsun025@140.112.13.101'
+#alias .226='ssh tslsun025@140.112.13.226'
+alias v100='ssh tslsun025@zinfandel.ncree.org'
+alias sftpV100='sftp tslsun025@zinfandel.ncree.org'
 alias oop='ssh tslsun@140.112.11.222'
-alias DS='source activate /anaconda3/envs/DataScience'
 
+alias DS='source activate DataScience'
+alias py36='source activate py36'
+alias py37='source activate py37'
 # open applications
+#
 alias word='open -a Microsoft\ Word'
 alias ppt='open -a Microsoft\ PowerPoint'
 alias excel='open -a Microsoft\ Excel'
@@ -19,4 +25,5 @@ alias excel='open -a Microsoft\ Excel'
 alias code='open -a Visual\ Studio\ Code'
 alias subl='open -a Sublime\ Text'
 
-
+alias ml='cd ~/Google\ 雲端硬碟/Study_cloud/碩二上/0_機器學習/HW/HW3'
+alias clinic='cd ~/projects/clinicAI/HW/hw3/'
