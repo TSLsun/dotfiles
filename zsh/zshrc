@@ -17,11 +17,13 @@ antigen bundle heroku
 antigen bundle pip
 antigen bundle lein
 antigen bundle command-not-found
+antigen bundle vi-mode
 
 # Some more bundles from zsh-users
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 
 # autojump
 antigen bundle autojump
@@ -55,21 +57,5 @@ export POWERLINE_CONFIG_COMMAND=powerline-config
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-### For Conda 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/tslsun/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/tslsun/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/tslsun/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/tslsun/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<
 
-### For vi-mode
-bindkey -v
+
