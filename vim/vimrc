@@ -54,7 +54,7 @@ Plug 'airblade/vim-gitgutter'
 
 "" Snippets
 Plug 'SirVer/ultisnips'
-    let g:UltiSnipsExpandTrigger = '<C-t>'
+    let g:UltiSnipsExpandTrigger = '<s-tab>'
     "let g:UltiSnipsExpandTrigger = '<tab>'
     let g:UltiSnipsJumpForwardTrigger = '<tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -78,7 +78,8 @@ Plug 'lervag/vimtex'
 "" Theme 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -93,7 +94,7 @@ call plug#end()
       "'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml'
 
     " Better display for messages
-    "set cmdheight=2
+    set cmdheight=1
     " Smaller updatetime for CursorHold & CursorHoldI
     set updatetime=300
     " don't give |ins-completion-menu| messages.
@@ -223,6 +224,17 @@ call plug#end()
             set clipboard=unnamed
         endif
     endif
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<Tab>" :
+    \ coc#refresh()
 
 " more settings:
     "set ruler 	            " 顯示右下角詳細資訊
