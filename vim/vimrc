@@ -1,134 +1,281 @@
-""" vundle - plugins settings
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"*******************************
+"" Vim-plug (plugin manager)
+"*******************************
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" alternatively, pass a path where Vundle should install plugins
-"let path = '~/some/path/here'
-"call vundle#rc(path)
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
-
-" Plugins:
-
-"" Gernal extension plugins
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'junegunn/fzf'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'Yggdroot/indentLine'
-Plugin 'majutsushi/tagbar'
-"Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'tpope/vim-fugitive'
-
-"" Markdown plugins
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'iamcco/markdown-preview.vim'
-
-" YouCompleteMe settings"
-let g:ycm_server_keep_logfiles = 1
-let g:ycm_server_log_level = 'debug'
-let g:ycm_path_to_python_interpreter='/usr/local/Cellar/python/3.7.5/bin/python3'
-let g:ycm_python_binary_path = '$HOME/miniconda3/bin/python3'
-"let g:ycm_python_binary_path = '$HOME/miniconda3/envs/DataScience/bin/python3'
-let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-let g:ycm_autoclose_preview_window_after_completion = 1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-"python with virtualenv support
-"py3 << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-    "project_base_dir = os.environ['VIRTUAL_ENV']
-    "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    "execfile(activate_this, dict(__file__=activate_this))
-"EOF
-
-" nerdtree settings"
-map <C-n> :NERDTreeToggle<CR> 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeNodeDelimiter = "\t"
-
-" fzf settings"
-map <C-p> :FZF<CR>
-
-" tagbar settings"
-" need to installed ctags
- let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
-nmap <F8> :TagbarToggle<CR>
-
-" vim-markdown settings"
-"let g:vim_markdown_folding_disabled = 1
-
-filetype plugin indent on     " required
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-" Put your stuff after this line
-
-syntax on    	        " 語法上色
-
-set mouse=a
-set encoding=utf-8
-
-set number 	            " 顯示行號
-if version >= 704
-    set relativenumber      " 顯示相對行號
+" Automatic installaion of vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
 endif
 
-set ruler 	            " 顯示右下角詳細資訊
-set cindent 	        " 自動縮排 
-set cursorline 	        " 底線 目前游標位置
-set expandtab  	        " 將文件中的tab轉成space顯示
-set backspace=2         " Insert mode 才能刪東西
-set tabstop=4 	        " tab換成幾個空格
-set shiftwidth=4        " 自動縮排時的空格數量
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+call plug#begin('~/.vim/plugged')
 
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-" Enable folding with the spacebar
-nnoremap <space> za
+"*******************************
+"" Install plugins
+"*******************************
+
+"" Autocompletion
+"Plug 'Valloric/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"" Fuzzy search files (fzf)
+if isdirectory('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
+else
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+endif
+    map <C-p> :FZF<CR>
+
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'Yggdroot/indentLine'
+Plug 'majutsushi/tagbar'
+Plug 'dense-analysis/ale'
+"Plug 'vim-syntastic/syntastic'
+Plug 'sillybun/vim-repl'
+Plug 'junegunn/goyo.vim'
+    nnoremap <LEADER>gy :Goyo<CR>
+Plug 'jiangmiao/auto-pairs'
+Plug 'google/vim-searchindex' "Display nice [N/n] when searching
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'sheerun/vim-polyglot'
+
+"" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+"" Snippets
+Plug 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger = '<C-t>'
+    "let g:UltiSnipsExpandTrigger = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+"" Markdown plugins
+Plug 'iamcco/markdown-preview.vim'
+"Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
+    "let g:vim_markdown_folding_disabled = 1
+
+"" Latex plugin
+Plug 'lervag/vimtex'
+    let g:tex_flavor='latex'
+    "let g:vimtex_view_method='open -a Preview'
+    ""let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
+"Plug 'KeitaNakamura/tex-conceal.vim'
+    "set conceallevel=1
+    "let g:tex_conceal='abdmg'
+
+"" Theme 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
+
+call plug#end()
+
+"*******************************
+"" Plugins Specific
+"*******************************
+
+" coc.nvim settings:
+    let g:coc_global_extensions=['coc-python']
+      "'coc-emoji', 'coc-eslint', 'coc-prettier',
+      "'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin',
+      "'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml'
+
+    " Better display for messages
+    "set cmdheight=2
+    " Smaller updatetime for CursorHold & CursorHoldI
+    set updatetime=300
+    " don't give |ins-completion-menu| messages.
+    set shortmess+=c
+    " always show signcolumns
+    set signcolumn=yes
+
+    " Use `lp` and `ln` for navigate diagnostics
+    nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
+    nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
+
+    " Remap keys for gotos
+    nmap <silent> <leader>ld <Plug>(coc-definition)
+    nmap <silent> <leader>lt <Plug>(coc-type-definition)
+    nmap <silent> <leader>li <Plug>(coc-implementation)
+    nmap <silent> <leader>lf <Plug>(coc-references)
+
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
+
+    " Use K for show documentation in preview window
+    nnoremap <silent> K :call <SID>show_documentation()<CR>
+    function! s:show_documentation()
+      if &filetype == 'vim'
+        execute 'h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
+
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+
+" YouCompleteMe settings:
+    "let g:ycm_server_keep_logfiles = 1
+    "let g:ycm_server_log_level = 'debug'
+    "let g:ycm_path_to_python_interpreter='/usr/local/Cellar/python/3.7.5/bin/python3'
+    "let g:ycm_python_binary_path = '$HOME/miniconda3/bin/python3'
+    "let g:ycm_python_binary_path = '$HOME/miniconda3/envs/ML/bin/python3'
+    "let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+    "let g:ycm_autoclose_preview_window_after_completion = 1
+    "map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" vim-airline settings:
+    let g:airline_powerline_fonts = 1
+    "set laststatus=2
+    let g:airline_theme='powerlineish'
+    " :AirlineTheme 'THEME' "to temporary set theme
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#tab_nr_type = 1
+    let g:airline#extensions#tabline#tab_min_count = 2
+    "let g:airline#extensions#tabline#show_tab_nr = 0 " disable tab numbers
+    let g:airline#extensions#tabline#show_tab_type = 0
+	"let g:airline#extensions#tabline#show_close_button = 0
+	let g:airline#extensions#tabline#tabs_label = '' 
+	let g:airline#extensions#tabline#buffers_label = ''
+    let g:airline#extensions#tabline#fnamemode = ':t'
+    let g:airline#extensions#tabline#show_tab_count = 0
+    let g:airline#extensions#tabline#show_buffers = 0 " dont show buffers in the tabline
+    let g:airline#extensions#tabline#show_splits = 0 
+    "let g:airline#extensions#whitespace#enabled = 0
+    "let g:airline#extensions#whitespace#symbol = '!'
+    
+" nerdtree settings:
+    map <C-n> :NERDTreeToggle<CR> 
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    let NERDTreeNodeDelimiter = "\t"
+
+" tagbar settings (need to installed ctags)
+    let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+    nmap <F8> :TagbarToggle<CR>
+
+" REPL settings
+    let g:repl_program = {
+                \   'python': 'ipython',
+                \   'default': 'zsh',
+                    \   }
+    let g:repl_predefine_python = {
+                \   'numpy': 'import numpy as np',
+                \   'matplotlib': 'from matplotlib import pyplot as plt'
+                \   }
+    let g:repl_cursor_down = 1
+    let g:repl_python_automerge = 1
+    let g:repl_ipython_version = '7'
+    nnoremap <leader>r :REPLToggle<Cr>
+    autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
+    autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+    autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+    " options
+    "let g:repl_width = None                    "窗口寬度
+    "let g:repl_height = None                   "窗口高度
+    let g:sendtorepl_invoke_key = "<leader>r"	"傳送代碼快捷鍵，默認為<leader>w
+    let g:repl_position = 3                     "0下，1上，2左，3右
+    "let g:repl_stayatrepl_when_open = 0        "打開REPL時是回到原文件與否
+
+
+"*******************************
+"" General settings
+"*******************************
+
+" Some basics:
+    set nocompatible
+    filetype plugin indent on
+	syntax on    	        	
+    set encoding=utf-8
+    set number relativenumber
+    set mouse=a
+
+" Enable autocompletion
+    set wildmode=longest,list,full
+
+" Shortcutting split navigation, saving keypress:
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
 
 " :set paste toggle
-set pastetoggle=<leader>p
+    set pastetoggle=<leader>p
 
 " Enable to paste from vim to clipboard 
-set clipboard=unnamed
+    if has('clipboard')       " There is a chance that CP is not available in nvim
+        if has('unnamedplus') " When possible use + register for copy-paste
+            set clipboard=unnamed,unnamedplus
+        else                  " On mac and Windows, use * register for copy-paste
+            set clipboard=unnamed
+        endif
+    endif
 
-inoremap ( ()<Esc>i
-inoremap " ""<Esc>i
-inoremap ' ''<Esc>i
-inoremap [ []<Esc>i
-inoremap {<CR> {<CR>}<Esc>ko
-inoremap {{ {}<ESC>i
+" more settings:
+    "set ruler 	            " 顯示右下角詳細資訊
+    set cindent 	        " 自動縮排 
+    set cursorline 	        " 底線 目前游標位置
+    set expandtab  	        " 將文件中的tab轉成space顯示
+    set backspace=2         " set backspace=indent,eol,start
+    set tabstop=4 	        " tab換成幾個空格
+    set shiftwidth=4        " 自動縮排時的空格數量
+    set hlsearch incsearch
+    set ignorecase smartcase
+    "set showmatch
+    set splitbelow splitright
 
-" powerline settings
-set rtp+=$HOME/.local/lib/python3.7/site-packages/powerline/bindings/vim/
-set laststatus=2
-set t_Co=256
+" for python
+    let python_highlight_all=1
+    autocmd Filetype python syn match pythonBoolean "\(\W\|^\)\@<=self\(\.\)\@="
+    autocmd Filetype python syn match pythonBoolean "\((\)\@<=self\(\,\)\@="
+    autocmd Filetype python set tabstop=4
+    autocmd Filetype python set softtabstop=4
+    autocmd Filetype python set shiftwidth=4
+    " autocmd Filetype python set textwidth=79
+    autocmd Filetype python set expandtab
+    autocmd Filetype python set autoindent
+    autocmd Filetype python set fileformat=unix
+    autocmd Filetype python set foldmethod=indent
+    autocmd Filetype python set foldlevel=99
+    autocmd FileType python nnoremap <Space> za
+    "autocmd BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+    "autocmd Filetype python hi pythonBoolean ctermfg=93
+    "autocmd Filetype python hi pythonBooleanbefore ctermfg=93
 
-""" COLOR settings
-set background=dark
-colorscheme Tomorrow-Night-Bright 
-"colorscheme kolor 
-"colorscheme molokai
-"colorscheme solarized
+" some shortcut:
+    nnoremap <leader>j <C-f>zz
+    nnoremap <leader>k <C-b>zz
 
+    nnoremap <leader>w :w<cr>
+    nnoremap <leader>q :q<cr>
 
+    nnoremap <LEFT> b
+    nnoremap <RIGHT> w
+
+" COLOR settings
+    set laststatus=2
+    set t_Co=256
+    set background=dark
+    "colorscheme base16-tomorrow-night
+    colorscheme Tomorrow-Night-Bright 
+    "colorscheme kolor 
+    "colorscheme molokai
+    "colorscheme solarized
+
+" for terminal mode
+    tnoremap <C-n> <C-w>N
+    tnoremap <ScrollWheelUp> <C-w>Nk
+    tnoremap <ScrollWheelDown> <C-w>Nj
