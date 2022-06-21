@@ -24,8 +24,8 @@ Plug 'preservim/nerdtree'
     "p->h - Jump to node parent
     "o->l - Open files, directories and bookmarks
     """ https://github.com/JetBrains/ideavim/wiki/NERDTree-support
-Plug 'easymotion/vim-easymotion'
 Plug 'machakann/vim-highlightedyank' " show highlight when yank
+"Plug 'easymotion/vim-easymotion'
 
 """ Settings -------------------------------
 set showmode
@@ -42,9 +42,10 @@ set scrolloff=3
 set clipboard+=unnamed
 set clipboard+=ideaput
 
-"" Don't use Ex mode, use Q for formatting.
+""" Don't use Ex mode, use Q for formatting.
 map Q gq
 
+""" Some more setups
 map <C-c> <Esc>
 nnoremap <C-z> :action ToggleDistractionFreeMode<CR>
 vnoremap < <gv
@@ -54,16 +55,9 @@ nnoremap \w :w<cr>
 nnoremap \q :q<cr>
 nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap \c :action Assertions2AssertJ.ConvertFile<CR>
 
-""" Terminal
-nnoremap <C-t> :action ActivateTerminalToolWindow<CR>
-nnoremap <leader>t :action Terminal.OpenInTerminal<CR>
-
-""" Tool windows
-nnoremap <C-p> :action JumpToLastWindow<CR>
-nnoremap <C-h> :action HideAllWindows<CR>
-
-"" Split windows navigation
+""" Split windows
 sethandler <C-j> a:vim
 sethandler <C-k> a:vim
 nnoremap <C-h> <C-w>h
@@ -76,28 +70,33 @@ nnoremap <C--> :action SplitHorizontally<CR>
 nnoremap <C-=> :action Unsplit<CR>
 nnoremap <C-m> :action MoveEditorToOppositeTabGroup<CR>
 
-nnoremap <s-TAB> :action PreviousTab<CR>
-nnoremap <TAB>   :action NextTab<CR>
+""" Navigate tab
+nnoremap <TAB>      :action PreviousTab<CR>
+nnoremap <S-TAB>    :action NextTab<CR>
 
+""" Navigate window
 nnoremap <leader>en :action EditSourceInNewWindow<CR>
-nnoremap <leader>n  :action NextWindow<CR>
-nnoremap <leader>q  :action CloseContent<CR>
+nnoremap <leader>w  :action NextWindow<CR>
+nnoremap <leader>W  :action PreviousWindow<CR>
+nnoremap <leader>qq :action CloseContent<CR>
 nnoremap <leader>qa :action CloseAllEditors<CR>
 
+""" Fold & Unfold
 nnoremap zc :action CollapseRegion<CR>
 nnoremap zo :action ExpandRegion<CR>
 nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
 
+""" Common usages
 nnoremap <leader>c :action CommentByLineComment<CR>
-nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>R :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
 nnoremap <leader>/ :action ShowErrorDescription<CR>
 nnoremap <leader>l :action RecentLocations<CR>
-nnoremap <leader>h :action LocalHistory.ShowHistory<CR>
 nnoremap <leader>u :action FindUsages<CR>
 
+""" Source navigation
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
 nnoremap gc :action GotoClass<CR>
@@ -105,6 +104,7 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotToDeclaration<CR>
 nnoremap gp :action GotToSuperMethod<CR>
 nnoremap gT :action GotoTest<CR>
+nnoremap gu :action ShowUsages<CR>
 nnoremap gb :action Back<CR>
 nnoremap gf :action Forward<CR>
 nnoremap gr :action RecentFiles<CR>
@@ -113,11 +113,28 @@ nnoremap gE :action GotoPreviousError<CR>
 
 """ Running and Debugging
 nnoremap \f :action ChooseRunConfiguration<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
 nnoremap <leader>rr :action ContextRun<CR>
+nnoremap <leader>rd :action ContextDebug<CR>
 nnoremap <leader>rc :action RunClass<CR>
 nnoremap <leader>rf :action RerunFailedTests<CR>
-nnoremap <leader>rw :action ActivateRunToolWindow<CR>
 
-nnoremap <leader>b :action ToggleLineBreakpoint<CR>
-nnoremap <leader>d :action ContextDebug<CR>
+""" ToolWindow
+nnoremap <leader>pw :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>lw :action ActivateSonarLintToolWindow<CR>
+nnoremap <leader>fw :action ActivateFindToolWindow<CR>
+nnoremap <leader>sw :action ActivateStructureToolWindow<CR>
+nnoremap <leader>rw :action ActivateRunToolWindow<CR>
 nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
+nnoremap <leader>tw :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>bw :action ActivateBuildToolWindow<CR>
+nnoremap <leader>mw :action ActivateMavenToolWindow<CR>
+nnoremap <leader>Dw :action ActivateDatabaseToolWindow<CR>
+
+nnoremap <leader>M :action MaximizeToolWindow<CR>
+nnoremap <leader>hw :action HideActiveWindow<CR>
+nnoremap <leader>ha :action HideAllWindows<CR>
+nnoremap <C-p> :action JumpToLastWindow<CR>
+
+""" Terminal
+nnoremap <leader>nt :action Terminal.OpenInTerminal<CR>
