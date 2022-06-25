@@ -19,7 +19,6 @@ call plug#begin('~/.vim/plugged')
 "*******************************
 
 "" Autocompletion
-"Plug 'Valloric/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" Fuzzy search files (fzf)
@@ -32,48 +31,31 @@ endif
     map <C-p> :FZF<CR>
 
 "" Project Drawer
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-Plug 'scrooloose/nerdcommenter'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale'
-"Plug 'vim-syntastic/syntastic'
-Plug 'Yggdroot/indentLine'
-Plug 'sillybun/vim-repl'
-Plug 'jiangmiao/auto-pairs'
-Plug 'google/vim-searchindex' "Display nice [N/n] when searching
-"Plug 'terryma/vim-multiple-cursors'
-"Plug 'sheerun/vim-polyglot'
-Plug 'psliwka/vim-smoothie'
-
-"" Focus plugins
-Plug 'junegunn/goyo.vim'
-    nnoremap <leader>gy :Goyo<CR>
-Plug 'junegunn/limelight.vim'
-    nmap <leader>l :Limelight!!<CR>
-    xmap <leader>l :Limelight!!<CR>
-    let g:limelight_conceal_ctermfg = 'gray'
-    " Default: 0.5
-    let g:limelight_default_coefficient = 0.7
-    " Number of preceding/following paragraphs to include (default: 0)
-    let g:limelight_paragraph_span = 1
-    " Beginning/end of paragraph
-    "   When there's no empty line between the paragraphs
-    "   and each paragraph starts with indentation
-    let g:limelight_bop = '^\s'
-    let g:limelight_eop = '\ze\n^\s'
-    " Highlighting priority (default: 10)
-    "   Set it to -1 not to overrule hlsearch
-    let g:limelight_priority = -1
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons' |
+            \ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "" Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+"" Handy plugins
+Plug 'preservim/nerdcommenter'                  " [count]<leader>c<space> |NERDCommenterToggle|
+Plug 'tpope/vim-surround'                       " ys, cs, ds, S(VISUAL mode)
+Plug 'tpope/vim-repeat'                         " Support `.` for vim-surround
+Plug 'google/vim-searchindex'                   " Display nice [N/n] when searching
+Plug 'psliwka/vim-smoothie'                     " Smooth scrolling for Vim
+Plug 'machakann/vim-highlightedyank'            " Show highlight when yank
+"Plug 'easymotion/vim-easymotion'               
+"Plug 'terryma/vim-multiple-cursors'            
+Plug 'jiangmiao/auto-pairs'                     
+Plug 'Yggdroot/indentLine'                      
+Plug 'sillybun/vim-repl'                        
+Plug 'dense-analysis/ale'                       " Asynchronous Lint Engine
+Plug 'preservim/tagbar'                         " Class outline viewer
+"Plug 'vim-syntastic/syntastic'                 " Syntax checking plugin
+"Plug 'sheerun/vim-polyglot'					" Syntax highlighting
 
 "" Snippets
 Plug 'SirVer/ultisnips'
@@ -93,7 +75,6 @@ Plug 'lervag/vimtex'
     let g:tex_flavor='latex'
     "let g:vimtex_view_method='open -a Preview'
     let g:vimtex_view_method='skim'
-    ""let g:vimtex_view_method='zathura'
     "let g:vimtex_quickfix_mode=0
 "Plug 'KeitaNakamura/tex-conceal.vim'
     "set conceallevel=1
@@ -108,10 +89,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'morhetz/gruvbox'
     "let g:gruvbox_italic=1    
     let g:gruvbox_contrast_dark='hard'
-Plug 'tomasiser/vim-code-dark'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'ryanoasis/vim-devicons'
-"Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
@@ -249,16 +226,6 @@ call plug#end()
     " Resume latest coc list
     nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-" YouCompleteMe settings:
-    "let g:ycm_server_keep_logfiles = 1
-    "let g:ycm_server_log_level = 'debug'
-    "let g:ycm_path_to_python_interpreter='/usr/local/Cellar/python/3.7.5/bin/python3'
-    "let g:ycm_python_binary_path = '$HOME/miniconda3/bin/python3'
-    "let g:ycm_python_binary_path = '$HOME/miniconda3/envs/ML/bin/python3'
-    "let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-    "let g:ycm_autoclose_preview_window_after_completion = 1
-    "map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
 " vim-airline settings:
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
@@ -278,10 +245,19 @@ call plug#end()
     "let g:airline_section_b = '%{strftime("%H:%M")}'
 
 " nerdtree settings:
-    map <C-n> :NERDTreeToggle<CR>
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    let NERDTreeNodeDelimiter = "\t"
-    " after a re-source, fix syntax matching issues (concealing brackets):
+    nnoremap <C-n> :NERDTreeToggle<CR>
+    " Open the existing NERDTree on each new tab.
+    autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+    " Start NERDTree when Vim starts with a directory argument.
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+        \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+    " Close the tab if NERDTree is the only window remaining in it.
+    autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+    let g:NERDTreeGitStatusUseNerdFonts = 1
+    let g:NERDTreeGitStatusConcealBrackets = 1
+    " After re-sourcing vimrc, fix syntax matching issues (concealing brackets):
     if exists('g:loaded_webdevicons')
       call webdevicons#refresh()
     endif
@@ -306,12 +282,12 @@ call plug#end()
     autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
     autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
     autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
-    " options
-    "let g:repl_width = None                    "窗口寬度
-    "let g:repl_height = None                   "窗口高度
-    let g:sendtorepl_invoke_key = "<leader>r"	"傳送代碼快捷鍵，默認為<leader>w
-    let g:repl_position = 3                     "0下，1上，2左，3右
-    "let g:repl_stayatrepl_when_open = 0        "打開REPL時是回到原文件與否
+    "" options
+    "let g:repl_width = None                    "REPL window width
+    "let g:repl_height = None                   "REPL window height
+    let g:sendtorepl_invoke_key = "<leader>r"	"send code to REPL, default is `<leader>w`
+    let g:repl_position = 3                     "0 DOWN/ 1 Up/ 2 Left/ 3 Right
+    "let g:repl_stayatrepl_when_open = 0        
 
 
 "*******************************
@@ -348,18 +324,19 @@ call plug#end()
     endif
 
 " more settings:
-    set ruler 	            " 顯示右下角詳細資訊
-    set cindent 	        " 自動縮排 
-    set cursorline 	        " 底線 目前游標位置
-    set expandtab  	        " 將文件中的tab轉成space顯示
-    set backspace=2         " set backspace=indent,eol,start
-    set tabstop=4 	        " tab換成幾個空格
-    set shiftwidth=4        " 自動縮排時的空格數量
+    set ruler 	              " Show the line and column number of the cursor position
+    set cindent 	          " C-style autoindent
+    set cursorline 	          " Highlight line under cursor
+    set expandtab  	          " turn tab to space in file
+    set backspace=2           " set backspace=indent,eol,start
+    set tabstop=4 	          " turn tab into 4 spaces
+    set shiftwidth=4          " indent using 4 spaces
     set hlsearch incsearch
     set ignorecase smartcase
     "set showmatch
-    set splitbelow splitright
-    set noshowmode          " vim-airline shows the mode already~"
+    set splitbelow splitright " Always focus on splited window
+    set noshowmode            " vim-airline status bar shows the mode already
+    set scrolloff=3           " Keep lines above or below the cursor when scrolling
     set conceallevel=0
     
 " for latex
@@ -391,43 +368,26 @@ call plug#end()
     "autocmd Filetype python hi pythonBooleanbefore ctermfg=93
 
 " some shortcut:
-    nnoremap <leader>j <C-f>zz
-    nnoremap <leader>k <C-b>zz
-
     nnoremap <leader>w :w<cr>
     nnoremap <leader>q :q<cr>
     
     " clear search highlight
-    nnoremap <leader><space> :noh<cr>
-    nnoremap <esc><esc> :let @/=""<cr>
+    nnoremap <space>/ :noh<cr>
+    nnoremap <leader><space>/ :let @/=""<cr>
 
-    " copy all
-    "map <C-a> :%y+<cr>
+	" Y yanks from the cursor to the end of line as expected. See :help Y.
+	nnoremap Y y$
+
+	"" copy all contents - `:%y+<cr>`
 
 " COLOR settings
     set laststatus=2
     set t_Co=256
     set background=dark
     colorscheme gruvbox 
-    "colorscheme Tomorrow-Night-Bright 
-    "colorscheme solarized
-    "colorscheme codedark 
-    "colorscheme kolor 
-    "colorscheme molokai
-    
-    "let g:airline_theme='gruvbox'
-    "let g:airline_theme='badwolf'
-    "let g:airline_theme='codedark'
-    "let g:airline_theme='solarized'
-    " :AirlineTheme 'THEME' "to temporary set theme
 
 " for terminal mode
     tnoremap <C-n> <C-w>N
     tnoremap <ScrollWheelUp> <C-w>Nk
     tnoremap <ScrollWheelDown> <C-w>Nj
 
-" Hardcore mode, disable arrow keys.
-    "noremap <Up> <NOP>
-    "noremap <Down> <NOP>
-    "noremap <Left> <NOP>
-    "noremap <Right> <NOP>
