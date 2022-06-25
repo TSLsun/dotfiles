@@ -1,19 +1,10 @@
 # alias
 alias vi='vim'
-alias r07='cd ~/Google\ 雲端硬碟/Study_cloud/碩二上'
-alias ml='cd ~/Google\ 雲端硬碟/Study_cloud/碩二上/0_機器學習/HW/HW5'
-alias research='cd ~/Google\ 雲端硬碟/Study_cloud/研究'
-alias .101='ssh tslsun025@140.112.13.101'
-alias v100='ssh tslsun025@zinfandel.ncree.org'
-alias sftpv100='sftp tslsun025@zinfandel.ncree.org'
-alias nlp='conda activate ~/miniconda3/envs/NLP'
-alias DS='conda activate ~/miniconda3/envs/DS'
+alias rm='rm -i'
+
+# load py env
+alias stock='conda activate ~/miniconda3/envs/stock'
 
 # open applications
-alias word='open -a Microsoft\ Word'
-alias ppt='open -a Microsoft\ PowerPoint'
-alias excel='open -a Microsoft\ Excel'
-alias code='open -a Visual\ Studio\ Code'
-alias subl='open -a Sublime\ Text'
-
+alias idea='open -na "IntelliJ IDEA CE"'
 

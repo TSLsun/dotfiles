@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block, everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Load Antigen
 source ~/.zsh/antigen.zsh
 
@@ -13,9 +6,9 @@ antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh)
 antigen bundle git
-antigen bundle heroku
-antigen bundle pip
-antigen bundle lein
+#antigen bundle heroku
+#antigen bundle pip
+#antigen bundle lein
 antigen bundle command-not-found
 antigen bundle vi-mode
 
@@ -37,25 +30,51 @@ antigen theme romkatv/powerlevel10k
 # Tell Antigen that you're done.
 antigen apply
 
-### PATH
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:$HOME/miniconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin:$PATH
-
 ### For powerlevel10k theme 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block, everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
+    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load .aliases
 source ~/.aliases
 
-### For powerline
-export POWERLINE_COMMAND=powerline
-export POWERLINE_CONFIG_COMMAND=powerline-config
- #. $HOME/.local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
+### For java
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+    #export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+
+    #jdk() {
+        #version=$1
+        #export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+        ##java -version
+    #}
+    #jdk 1.8
 
 ### For nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    export NVM_DIR="$HOME/.nvm"
+    #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/nvm.sh"  ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+### >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/tslsun/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/tslsun/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/tslsun/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/tslsun/miniconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+### <<< conda initialize <<<
 
-
+### PATH
+# If you come from bash you might have to change your $PATH.
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.local/bin:/Library/TeX/texbin:${JAVA_HOME}/bin:$PATH
