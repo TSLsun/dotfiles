@@ -8,6 +8,7 @@
     # shell stuff
     ~/.aliases: shell/aliases
     ~/.zshrc: shell/zshrc
+    ~/.zimrc: shell/zimrc
 
     # vim
     ~/.vimrc: vim/vimrc
