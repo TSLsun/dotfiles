@@ -1,24 +1,41 @@
 # dotfiles
-my dotfiles backup
 
-## vim
+my dotfiles
 
-[vim setup details](https://github.com/TSLsun/macOS_settings/blob/master/vim-setup.md)
+## Install
 
-**1. plain.vimrc** 
+```sh
+git clone https://github.com/TSLsun/dotfiles.git
+cd dotfiles && ./install
+```
 
-**2. vimrc** 
+## Quick Notes
 
-## tmux
+### dotbot
 
-[tmux setup details](https://github.com/TSLsun/macOS_settings/blob/master/tmux-setup.md)
+- adopt [anishathalye/dotbot](https://github.com/anishathalye/dotbot)
+  - `git submodule add https://github.com/anishathalye/dotbot`
+- maintain `install.conf.yaml` for the links of dotfiles and shell commands etc.
+- run `./install` whenever a new dotfile is added
 
-**1. tmux.conf**
+### zsh
 
-## zsh
+- adopt [zimfw/zimfw](https://github.com/zimfw/zimfw) to manage zsh 
+  - maintain `.zimrc` for zsh modules
+  - usages:
+    - Add new modules to `~/.zimrc`: run `zimfw install`
+    - Remove modules from `~/.zimrc`: run `zimfw uninstall`
+    - Update modules to latest: run `zimfw update`
+    - Upgrade zimfw to latest: run `zimfw upgrade`
+- theme
+  - [romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- modules
+  - [zimfw/git](https://github.com/zimfw/git) - handy git aliases and functions
 
-[zsh setup details](https://github.com/TSLsun/macOS_settings/blob/master/zsh-setup.md)
+### vim
 
-**1. zshrc**
+- vim-plug
 
-**2. aliases**
+### tmux
+
+- tpm
