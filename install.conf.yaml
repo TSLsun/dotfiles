@@ -6,18 +6,15 @@
 
 - link:
     # shell stuff
-    ~/.aliases: shell/.aliases
-    ~/.zshrc: shell/.zshrc
-
-    # git
-    ~/.gitconfig: git/.gitconfig
+    ~/.aliases: shell/aliases
+    ~/.zshrc: shell/zshrc
 
     # vim
-    ~/.vimrc: vim/.vimrc
-    ~/.ideavimrc: vim/.ideavimrc
+    ~/.vimrc: vim/vimrc
+    ~/.ideavimrc: vim/ideavimrc
 
     # tmux
-    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.tmux.conf: tmux/tmux.conf
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
