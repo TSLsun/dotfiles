@@ -9,6 +9,7 @@
     ~/.aliases: shell/aliases
     ~/.zshrc: shell/zshrc
     ~/.zimrc: shell/zimrc
+    ~/.p10k.zsh: shell/p10k.zsh
 
     # vim
     ~/.vimrc: vim/vimrc
