@@ -8,6 +8,7 @@
     # shell stuff
     ~/.aliases: shell/aliases
     ~/.zshrc: shell/zshrc
+    ~/.zshrc_local: shell/zshrc_local
     ~/.zimrc: shell/zimrc
     ~/.p10k.zsh: shell/p10k.zsh
 

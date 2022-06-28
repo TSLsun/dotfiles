@@ -3,11 +3,10 @@
 "*******************************
 
 " Automatic installaion of vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Specify a directory for plugins
@@ -56,6 +55,7 @@ Plug 'Yggdroot/indentLine'
 "Plug 'preservim/tagbar'                        " Class outline viewer
 "Plug 'vim-syntastic/syntastic'                 " Syntax checking plugin
 "Plug 'sheerun/vim-polyglot'                    " Syntax highlighting
+Plug 'tmux-plugins/vim-tmux'
 
 
 "" Markdown plugins

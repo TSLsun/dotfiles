@@ -25,6 +25,7 @@ Plug 'preservim/nerdtree'
     "o->l - Open files, directories and bookmarks
     """ https://github.com/JetBrains/ideavim/wiki/NERDTree-support
 Plug 'machakann/vim-highlightedyank' " show highlight when yank
+"Plug 'terryma/vim-multiple-cursors'
 "Plug 'easymotion/vim-easymotion'
 
 """ Settings -------------------------------
@@ -33,14 +34,10 @@ set showcmd
 set number
 set relativenumber
 set incsearch
-"set hlsearch
-set nohlsearch      " Disable search highlighting
+set hlsearch
 set ignorecase
 set smartcase       " Override the 'ignorecase' option if the search pattern contains upper case characters
 set scrolloff=3
-
-set clipboard+=unnamed
-set clipboard+=ideaput
 
 """ Don't use Ex mode, use Q for formatting.
 map Q gq
@@ -56,6 +53,29 @@ nnoremap \q :q<cr>
 nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 nnoremap \c :action Assertions2AssertJ.ConvertFile<CR>
+
+" clear the search buffer when hitting return
+ nnoremap <leader>/ :nohlsearch<cr>
+
+" To copy text to the end-of-line, press Y.
+" This mapping sets up Y to be consistent with
+" the C and D operators, which act from the cursor
+" to the end of the line. The default behavior of Y
+" is to yank the whole line.
+nnoremap Y y$
+
+""" Shortcut for copying to/from System Clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>P "+P
+
+" Greatest remap EVER!!
+" Let me explain, this remap while in visual mode
+" will delete what is currently highlighted and replace it
+" with what is in the register BUT it will YANK (delete) it
+" to a VOID register. Meaning I still have what I originally had
+" when I pasted. I don't loose the previous thing I YANKED!
+vnoremap <leader>p "_dP
 
 """ Split windows
 sethandler <C-j> a:vim
@@ -78,7 +98,6 @@ nnoremap <S-TAB>    :action NextTab<CR>
 nnoremap <leader>en :action EditSourceInNewWindow<CR>
 nnoremap <leader>w  :action NextWindow<CR>
 nnoremap <leader>W  :action PreviousWindow<CR>
-nnoremap <leader>qq :action CloseContent<CR>
 nnoremap <leader>qa :action CloseAllEditors<CR>
 
 """ Fold & Unfold
@@ -88,13 +107,10 @@ nnoremap <leader>zc :action CollapseAllRegions<CR>
 nnoremap <leader>zo :action ExpandAllRegions<CR>
 
 """ Common usages
-nnoremap <leader>c :action CommentByLineComment<CR>
 nnoremap <leader>R :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
-nnoremap <leader>/ :action ShowErrorDescription<CR>
 nnoremap <leader>l :action RecentLocations<CR>
-nnoremap <leader>u :action FindUsages<CR>
 
 """ Source navigation
 nnoremap [[ :action MethodUp<CR>
@@ -120,16 +136,14 @@ nnoremap <leader>rc :action RunClass<CR>
 nnoremap <leader>rf :action RerunFailedTests<CR>
 
 """ ToolWindow
-nnoremap <leader>pw :action ActivateProblemsViewToolWindow<CR>
-nnoremap <leader>lw :action ActivateSonarLintToolWindow<CR>
-nnoremap <leader>fw :action ActivateFindToolWindow<CR>
 nnoremap <leader>sw :action ActivateStructureToolWindow<CR>
+nnoremap <leader>fw :action ActivateFindToolWindow<CR>
 nnoremap <leader>rw :action ActivateRunToolWindow<CR>
 nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
+nnoremap <leader>pw :action ActivateProblemsViewToolWindow<CR>
+nnoremap <leader>lw :action ActivateSonarLintToolWindow<CR>
 nnoremap <leader>tw :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>bw :action ActivateBuildToolWindow<CR>
-nnoremap <leader>mw :action ActivateMavenToolWindow<CR>
-nnoremap <leader>Dw :action ActivateDatabaseToolWindow<CR>
 
 nnoremap <leader>M :action MaximizeToolWindow<CR>
 nnoremap <leader>hw :action HideActiveWindow<CR>
