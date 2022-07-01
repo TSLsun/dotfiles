@@ -37,7 +37,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase       " Override the 'ignorecase' option if the search pattern contains upper case characters
-set scrolloff=3
+set scrolloff=5
 
 """ Don't use Ex mode, use Q for formatting.
 map Q gq
@@ -112,13 +112,17 @@ nnoremap <leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
 nnoremap <leader>l :action RecentLocations<CR>
 
+nnoremap \i :action QuickImplementations<CR>
+nnoremap \o :action QuickJavaDoc<CR>
+nnoremap \p :action QuickTypeDefinition<CR>
+
 """ Source navigation
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
 nnoremap gc :action GotoClass<CR>
 nnoremap gi :action GotoImplementation<CR>
-nnoremap gd :action GotToDeclaration<CR>
-nnoremap gp :action GotToSuperMethod<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gp :action GotoSuperMethod<CR>
 nnoremap gT :action GotoTest<CR>
 nnoremap gu :action ShowUsages<CR>
 nnoremap gb :action Back<CR>
