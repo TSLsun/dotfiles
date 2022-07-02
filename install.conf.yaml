@@ -12,6 +12,10 @@
     ~/.zimrc: shell/zimrc
     ~/.p10k.zsh: shell/p10k.zsh
 
+    # git
+    ~/.gitconfig: git/gitconfig
+    ~/.gitconfig_local: git/gitconfig_local
+
     # vim
     ~/.vimrc: vim/vimrc
     ~/.ideavimrc: vim/ideavimrc
