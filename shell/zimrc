@@ -15,6 +15,9 @@ zmodule input
 zmodule utility
 # Remind aliases
 zmodule MichaelAquilina/zsh-you-should-use --source you-should-use.plugin.zsh
+# Configures fzf to use fd or ripgrep for faster fetching of files and directories names.#
+# Also sets CTRL-T previews with bat if it's installed
+zmodule fzf
 
 ### Theme ###
 zmodule romkatv/powerlevel10k --use degit
