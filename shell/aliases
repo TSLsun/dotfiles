@@ -1,6 +1,38 @@
-# alias
+# vim
 alias vi='vim'
-alias rm='rm -i'
+
+# safer remove
+if (( ${+commands[trash]} )); then
+    alias rm='trash'
+else
+    alias rm='rm -i'
+fi
+
+if (( ${+commands[bat]} )); then
+    # bat: cat clone with wings
+    alias cat='bat'
+fi
+
+if command -v exa 2>&1 >/dev/null; then
+    # exa: a modern replacement for ls
+    alias ls='exa'
+    alias l='exa --long --group --git'
+fi
+
+if (( ${+commands[rg]} )); then
+    # ripgrep: recursively searches directories for a regex pattern while respecting your gitignore
+    alias grep="rg"
+fi
+
+if (( ${+commands[dust]}  )); then
+    # dust: a more intuitive version of du in rust
+    alias du="dust"
+fi
+
+# homebrew backup
+alias brew-backup='brew bundle dump --describe --force && brew bundle --force cleanup'
+# Recursively delete `.DS_Store` files
+alias clean-ds="find . -name '*.DS_Store' -type f -ls -delete"
 
 # load py env
 alias stock='conda activate ~/miniconda3/envs/stock'
