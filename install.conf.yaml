@@ -4,6 +4,9 @@
 
 - clean: ['~']
 
+- shell:
+  - [mkdir -p ~/.git, Creating ~/.git folder]
+
 - link:
     # shell stuff
     ~/.aliases: shell/aliases
@@ -15,6 +18,7 @@
     # git
     ~/.gitconfig: git/gitconfig
     ~/.gitconfig_local: git/gitconfig_local
+    ~/.git/git-clone-bare-for-worktrees.sh: git/git-clone-bare-for-worktrees.sh
 
     # vim
     ~/.vimrc: vim/vimrc

@@ -15,5 +15,8 @@
 [diff]
     colorMoved = default
 
+[alias]
+	clone-bare-worktree = "!sh $HOME/.git/git-clone-bare-for-worktrees.sh"
+
 [include]
     path = ~/.gitconfig_local
