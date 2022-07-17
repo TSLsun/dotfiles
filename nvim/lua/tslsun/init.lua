@@ -1,0 +1,1 @@
+require("tslsun.set-options")

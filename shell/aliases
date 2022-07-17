@@ -1,5 +1,9 @@
 # vim
-alias vi='vim'
+if (( ${+commands[nvim]} )); then
+    alias vi='nvim'
+else
+    alias vi='vim'
+fi
 
 # safer remove
 if (( ${+commands[trash]} )); then
