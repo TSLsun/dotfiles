@@ -39,6 +39,7 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lualine/lualine.nvim'
 "Plug 'windwp/windline.nvim'
+Plug 'akinsho/bufferline.nvim'
 
 " LSP
 Plug 'williamboman/nvim-lsp-installer'
