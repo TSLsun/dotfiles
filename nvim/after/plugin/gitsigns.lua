@@ -1,4 +1,4 @@
-local gitsigns = require('gitsigns')
+local gs = require('gitsigns')
 
 local line = vim.fn.line
 
@@ -11,40 +11,40 @@ local function on_attach(bufnr)
 
   map('n', ']c', function()
     if vim.wo.diff then return ']c' end
-    vim.schedule(gitsigns.next_hunk)
+    vim.schedule(gs.next_hunk)
     return '<Ignore>'
   end, {expr=true})
 
   map('n', '[c', function()
     if vim.wo.diff then return '[c' end
-    vim.schedule(gitsigns.prev_hunk)
+    vim.schedule(gs.prev_hunk)
     return '<Ignore>'
   end, {expr=true})
 
-  map('n', '<leader>hs', gitsigns.stage_hunk)
-  map('n', '<leader>hr', gitsigns.reset_hunk)
-  map('v', '<leader>hs', function() gitsigns.stage_hunk({line("."), line("v")}) end)
-  map('v', '<leader>hh', function() gitsigns.reset_hunk({line("."), line("v")}) end)
-  map('n', '<leader>hS', gitsigns.stage_buffer)
-  map('n', '<leader>hu', gitsigns.undo_stage_hunk)
-  map('n', '<leader>hR', gitsigns.reset_buffer)
-  map('n', '<leader>hp', gitsigns.preview_hunk)
-  map('n', '<leader>hb', function() gitsigns.blame_line{full=true} end)
-  map('n', '<leader>hd', gitsigns.diffthis)
-  map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+  map('n', '<leader>hs', gs.stage_hunk)
+  map('n', '<leader>hr', gs.reset_hunk)
+  map('v', '<leader>hs', function() gs.stage_hunk({line("."), line("v")}) end)
+  map('v', '<leader>hr', function() gs.reset_hunk({line("."), line("v")}) end)
+  map('n', '<leader>hS', gs.stage_buffer)
+  map('n', '<leader>hu', gs.undo_stage_hunk)
+  map('n', '<leader>hR', gs.reset_buffer)
+  map('n', '<leader>hp', gs.preview_hunk)
+  map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+  map('n', '<leader>hd', gs.diffthis)
+  map('n', '<leader>hD', function() gs.diffthis('~') end)
 
   -- Toggles
-  map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-  map('n', '<leader>td', gitsigns.toggle_deleted)
-  map('n', '<leader>tw', gitsigns.toggle_word_diff)
+  map('n', '<leader>tb', gs.toggle_current_line_blame)
+  map('n', '<leader>td', gs.toggle_deleted)
+  map('n', '<leader>tw', gs.toggle_word_diff)
 
-  map('n', '<leader>hQ', function() gitsigns.setqflist('all') end)
-  map('n', '<leader>hq', gitsigns.setqflist)
+  map('n', '<leader>hQ', function() gs.setqflist('all') end)
+  map('n', '<leader>hq', gs.setqflist)
 
   map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
-gitsigns.setup {
+gs.setup {
   on_attach = on_attach,
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'   , show_count=false},
