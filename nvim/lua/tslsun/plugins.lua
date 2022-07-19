@@ -60,6 +60,7 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
+    config = require('tslsun.treesitter'),
   }
   use 'nvim-treesitter/playground'
   use 'nvim-treesitter/nvim-treesitter-context'
