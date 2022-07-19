@@ -11,7 +11,6 @@ opt.incsearch = true
 
 opt.shiftwidth = 4
 opt.tabstop = 4
-opt.softtabstop = 4
 opt.expandtab = true -- Use spaces instead of tab characters.
 
 opt.smartindent = true
@@ -48,5 +47,4 @@ opt.completeopt = { -- Options for insert mode completion
   'menuone', -- Use the pop-up menu also when there is only one match
   'noselect', -- Do not select a match in the menu
 }
-
 
