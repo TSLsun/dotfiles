@@ -60,7 +60,6 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = require('tslsun.treesitter'),
   }
   use 'nvim-treesitter/playground'
   use 'nvim-treesitter/nvim-treesitter-context'
@@ -78,8 +77,8 @@ return require('packer').startup(function(use)
   augroup END
 
   " vim-plug keymaps
-  nnoremap <leader>pi <Cmd>PlugInstall<CR>
-  nnoremap <leader>pc <Cmd>PlugClean<CR>
+  nnoremap <leader>pi <Cmd>PackerInstall<CR>
+  nnoremap <leader>pc <Cmd>PackerClean<CR>
 
   " to try plugins
   "nnoremap <leader>u :UndotreeShow<CR>
