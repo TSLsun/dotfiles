@@ -6,6 +6,8 @@
 
 - shell:
   - [mkdir -p ~/.git, Creating ~/.git folder]
+  - [mkdir -p ~/.config/, Creating ~/.config folder]
+  - [cp -R alacritty ~/.config, Copying configs to ~/.config/alacritty folder]
 
 - link:
     # shell stuff
