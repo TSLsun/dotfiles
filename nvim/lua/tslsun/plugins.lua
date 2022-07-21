@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
     'kyazdani42/nvim-tree.lua',
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
+  use 'liuchengxu/vista.vim'
 
   -- LSP
   use 'williamboman/nvim-lsp-installer'
