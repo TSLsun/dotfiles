@@ -7,26 +7,28 @@ local telescope = require('telescope.builtin')
 
 nnoremap("<C-p>", function() telescope.find_files() end)
 nnoremap("<leader>pf", function() telescope.git_files() end)
+nnoremap("<leader>pb", function() telescope.buffers() end)
+nnoremap("<leader>ph", function() telescope.help_tags() end)
+nnoremap("<leader>gb", function() telescope.git_branches() end)
 
-nnoremap("<leader>ps", function()
+nnoremap("<space>fs", function()
     telescope.grep_string({ search = vim.fn.input("Grep For > ")})
 end)
-nnoremap("<leader>pw", function()
+nnoremap("<space>fw", function()
   telescope.grep_string { search = vim.fn.expand("<cword>") }
-end)
-
-nnoremap("<leader>pb", function() telescope.buffers() end)
-nnoremap("<leader>vh", function() telescope.help_tags() end)
-
-nnoremap("<leader>gc", function() telescope.git_branches() end)
-
-nnoremap("<leader>gw", function()
-    require('telescope').extensions.git_worktree.git_worktrees()
-end)
-nnoremap("<leader>gm", function()
-    require('telescope').extensions.git_worktree.create_git_worktree()
 end)
 
 nnoremap("<space>fb", function()
   require("telescope").extensions.file_browser.file_browser()
 end)
+
+nnoremap("<leader>gwl", function()
+    require('telescope').extensions.git_worktree.git_worktrees()
+end)
+nnoremap("<leader>gwa", function()
+    require('telescope').extensions.git_worktree.create_git_worktree()
+end)
+nnoremap("<leader>gwx", function()
+    require('telescope').extensions.git_worktree.delete_worktree()
+end)
+

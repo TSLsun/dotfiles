@@ -72,7 +72,9 @@ return require('packer').startup(function(use)
   -- Neovim Telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0'
+  }
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
