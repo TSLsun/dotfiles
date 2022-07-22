@@ -393,16 +393,16 @@ font:
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
 
-#cursor:
+cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    #shape: Block
+    shape: Block
 
     # Cursor blinking state
     #
@@ -412,6 +412,8 @@ font:
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
     #blinking: Off
+    blinking: Always
+
 
   # Vi mode cursor style
   #
@@ -422,7 +424,7 @@ font:
   #vi_mode_style: None
 
   # Cursor blinking interval in milliseconds.
-  #blink_interval: 750
+  blink_interval: 750
 
   # Time after which cursor stops blinking, in seconds.
   #
