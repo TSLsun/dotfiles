@@ -1,8 +1,6 @@
 --
 -- Completion setup
 --
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
 local cmp =  require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
@@ -90,7 +88,6 @@ cmp.setup({
     -- { name = 'vsnip' }, -- For vsnip users.
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
-  }, {
     { name = 'buffer' },
   }),
   formatting = {
@@ -145,8 +142,7 @@ cmp.setup({
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
+    { name = 'path' },
     { name = 'cmdline' }
   })
 })

@@ -25,7 +25,6 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'sindrets/diffview.nvim'
   use 'junegunn/gv.vim'
-  use 'ThePrimeagen/git-worktree.nvim'
 
   -- UI
   use 'gruvbox-community/gruvbox'
@@ -36,14 +35,9 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   --use 'windwp/windline.nvim'
   use {
-    'akinsho/bufferline.nvim',
-    tag = 'v2.*',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    'akinsho/bufferline.nvim', tag = 'v2.*'
   }
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
-  }
+  use 'kyazdani42/nvim-tree.lua'
   use 'liuchengxu/vista.vim'
 
   -- LSP
@@ -76,7 +70,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.0'
   }
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use 'nvim-telescope/telescope-fzy-native.nvim'
+  use 'ThePrimeagen/git-worktree.nvim'
 
   local nnoremap = require('tslsun.keymap').nnoremap
   nnoremap('<leader>pi', '<Cmd>PackerInstall<CR>')

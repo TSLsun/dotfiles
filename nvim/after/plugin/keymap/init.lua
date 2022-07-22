@@ -7,13 +7,15 @@ local nmap = remap.nmap
 
 nnoremap("<leader>w", "<Cmd>write<CR>")
 nnoremap("<leader>q", "<Cmd>quit<CR>")
-vim.cmd('set pastetoggle=<leader>p')
 nnoremap("<leader><CR>", "<Cmd>source ~/.config/nvim/init.lua<CR>")
 
 -- clear search highlight
 nnoremap("<space>/", "<Cmd>noh<CR>")
 nnoremap("<leader><space>/", "<Cmd>let @/=\"\"<CR>")
 
+nnoremap("<space>=", function()
+  vim.lsp.buf.formatting_sync()
+end)
 nnoremap("<leader>pv", "<Cmd>Explore<CR>")
 --nnoremap("<leader>u", ":UndotreeShow<CR>")
 
