@@ -1,7 +1,7 @@
 -- Colors setup
 vim.opt.termguicolors = true -- Enables 24-bit RGB color support.
 
-function ColorMyPencils ()
+function ColorMyPencils()
   vim.opt.background = "dark"
   vim.g.gruvbox_contrast_dark = "hard"
   vim.g.gruvbox_invert_selection = "0"
@@ -22,7 +22,7 @@ end
 ColorMyPencils()
 
 -- devicons
-require('nvim-web-devicons').setup { }
+require('nvim-web-devicons').setup {}
 
 -- status line
 require('lualine').setup {
@@ -31,7 +31,7 @@ require('lualine').setup {
   },
 }
 
--- buffer(tab) line 
+-- buffer(tab) line
 require('bufferline').setup {
   options = {
     mode = "tabs", -- "buffers" | "tabs" (only show tabpages)

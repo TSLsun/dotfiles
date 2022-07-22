@@ -1,21 +1,22 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
 end
 
 return require('packer').startup(function(use)
   -- My plugins here
   use 'wbthomason/packer.nvim'
-  use 'preservim/nerdcommenter'  -- [count]<leader>c<space> <Plug>NERDCommenterToggle<CR>
-  use 'tpope/vim-surround'       -- ys, cs, ds, S(VISUAL mode)
-  use 'tpope/vim-repeat'         -- Support `.` for vim-surround
-  use 'psliwka/vim-smoothie'     -- Smooth scrolling
+  use 'preservim/nerdcommenter' -- [count]<leader>c<space> <Plug>NERDCommenterToggle<CR>
+  use 'tpope/vim-surround' -- ys, cs, ds, S(VISUAL mode)
+  use 'tpope/vim-repeat' -- Support `.` for vim-surround
+  use 'psliwka/vim-smoothie' -- Smooth scrolling
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end,
   }
-  use {                          -- :MarkdownPreview<CR>
+  use { -- :MarkdownPreview<CR>
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn["mkdp#util#install"]() end,
     ft = { 'markdown' }
@@ -82,4 +83,3 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
-

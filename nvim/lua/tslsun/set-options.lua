@@ -20,12 +20,12 @@ opt.ruler = false -- Disable showing line and column numbers in command line.
 opt.cmdheight = 1 -- Give more space for displaying messages
 opt.list = true -- Show characters in 'listchars' in place of certain special characters.
 opt.listchars = {
-    tab = "»·",
-    nbsp = "␣",
-    extends = "…", -- extends = ">"
-    precedes = "…", -- precedes = "<"
-    trail = "·", -- trail = "~"
-    --eol = "¬",
+  tab = "»·",
+  nbsp = "␣",
+  extends = "…", -- extends = ">"
+  precedes = "…", -- precedes = "<"
+  trail = "·", -- trail = "~"
+  --eol = "¬",
 }
 opt.signcolumn = "yes"
 --opt.colorcolumn = "100"
@@ -48,4 +48,3 @@ opt.completeopt = { -- Options for insert mode completion
   'menuone', -- Use the pop-up menu also when there is only one match
   'noselect', -- Do not select a match in the menu
 }
-

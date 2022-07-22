@@ -2,10 +2,10 @@
 -- LSP setup
 --
 local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.setup{}
+lsp_installer.setup {}
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -88,17 +88,17 @@ lspconfig["jdtls"].setup {
         -- All types whose fully qualified name matches the selected filter strings will be ignored in content assist
         -- or quick fix proposals and when organizing imports.
         -- For example 'java.awt.*' will hide all types from the awt packages.
-          filteredTypes = {
-            "antlr.*",
-            "bitronix.*",
-            "com.docusign.*",
-            "com.lowagi.*",
-            "com.sun.*",
-            "org.apache.xmlbeans.*"
-          },
+        filteredTypes = {
+          "antlr.*",
+          "bitronix.*",
+          "com.docusign.*",
+          "com.lowagi.*",
+          "com.sun.*",
+          "org.apache.xmlbeans.*"
+        },
 
-          -- When set to true, method arguments are guessed when a method is selected from as list of code assist proposals.
-          guessMethodArguments = false,
+        -- When set to true, method arguments are guessed when a method is selected from as list of code assist proposals.
+        guessMethodArguments = false,
       },
 
       configuration = {
@@ -158,7 +158,7 @@ lspconfig["sumneko_lua"].setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim', 'use'},
+        globals = { 'vim', 'use' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files

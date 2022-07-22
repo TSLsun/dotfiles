@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
   let g:vista_executive_for = {
     \ 'java': 'nvim_lsp',
     \ 'json': 'nvim_lsp',

@@ -68,4 +68,3 @@ nnoremap("<leader>x", "<Cmd>!chmod +x %<CR>", { silent = true })
 
 nnoremap("<leader>+", ":vertical resize +5<CR>")
 nnoremap("<leader>-", ":vertical resize -5<CR>")
-

@@ -1,7 +1,7 @@
 --
 -- Completion setup
 --
-local cmp =  require('cmp')
+local cmp = require('cmp')
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
@@ -146,4 +146,3 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
-
