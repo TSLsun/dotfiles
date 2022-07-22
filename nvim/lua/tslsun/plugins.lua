@@ -75,19 +75,9 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
-  vim.cmd([[
-  augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 200})
-  augroup END
-
-  " vim-plug keymaps
-  nnoremap <leader>pi <Cmd>PackerInstall<CR>
-  nnoremap <leader>pc <Cmd>PackerClean<CR>
-
-  " to try plugins
-  "nnoremap <leader>u :UndotreeShow<CR>
-  ]])
+  local nnoremap = require('tslsun.keymap').nnoremap
+  nnoremap('<leader>pi', '<Cmd>PackerInstall<CR>')
+  nnoremap('<leader>pc', '<Cmd>PackerClean<CR>')
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

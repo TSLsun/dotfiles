@@ -4,6 +4,7 @@ opt.number = true
 opt.relativenumber = true
 opt.guicursor = ""
 opt.cursorline = true
+opt.wrap = false
 
 opt.ignorecase = true
 opt.smartcase = true

@@ -5,6 +5,8 @@ vim.cmd[[
     \ 'lua': 'nvim_lsp',
     \ 'vim': 'nvim_lsp',
     \ }
+
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 ]]
 
 local nnoremap = require('tslsun.keymap').nnoremap

@@ -8,7 +8,7 @@ local nmap = remap.nmap
 nnoremap("<leader>w", "<Cmd>write<CR>")
 nnoremap("<leader>q", "<Cmd>quit<CR>")
 vim.cmd('set pastetoggle=<leader>p')
-nnoremap("<leader><CR>", "<Cmd>source ~/.config/nvim/init.vim<CR>")
+nnoremap("<leader><CR>", "<Cmd>source ~/.config/nvim/init.lua<CR>")
 
 -- clear search highlight
 nnoremap("<space>/", "<Cmd>noh<CR>")
