@@ -27,3 +27,6 @@ nnoremap("<leader>gm", function()
     require('telescope').extensions.git_worktree.create_git_worktree()
 end)
 
+nnoremap("<space>fb", function()
+  require("telescope").extensions.file_browser.file_browser()
+end)

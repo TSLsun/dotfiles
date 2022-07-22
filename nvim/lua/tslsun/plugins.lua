@@ -73,6 +73,7 @@ return require('packer').startup(function(use)
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
 
   local nnoremap = require('tslsun.keymap').nnoremap
