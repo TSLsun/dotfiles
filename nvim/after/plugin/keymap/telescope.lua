@@ -3,6 +3,12 @@ local nnoremap = remap.nnoremap
 
 local telescope = require('telescope.builtin')
 
+nnoremap("<C-f>",
+  function()
+    telescope.live_grep { search = vim.fn.expand("<cword>") }
+  end,
+  { desc = "Telescope live_grep" }
+)
 nnoremap("<C-p>",
   function()
     telescope.find_files()

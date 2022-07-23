@@ -27,6 +27,7 @@ packer.init {
 return require('packer').startup(function(use)
   -- Put all plugins here
   use 'wbthomason/packer.nvim'
+  -- Utilities
   use 'preservim/nerdcommenter' -- [count]<leader>c<space> <Plug>NERDCommenterToggle<CR>
   use 'tpope/vim-surround' -- ys, cs, ds, S(VISUAL mode)
   use 'tpope/vim-repeat' -- Support `.` for vim-surround
@@ -52,15 +53,20 @@ return require('packer').startup(function(use)
   use 'folke/tokyonight.nvim'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
-  --use 'windwp/windline.nvim'
   use { 'akinsho/bufferline.nvim', tag = 'v2.*' }
   use 'kyazdani42/nvim-tree.lua'
-  use 'liuchengxu/vista.vim'
 
   -- LSP
   use 'williamboman/nvim-lsp-installer'
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind.nvim'
+  use {
+    'glepnir/lspsaga.nvim',
+    config = function()
+      require("lspsaga").init_lsp_saga()
+    end,
+  }
+  --use 'simrat39/symbols-outline.nvim'
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
