@@ -1,11 +1,31 @@
 -- Colors setup
 vim.opt.termguicolors = true -- Enables 24-bit RGB color support.
+vim.opt.background = "dark"
 
 function ColorMyPencils()
-  vim.opt.background = "dark"
   vim.g.gruvbox_contrast_dark = "hard"
   vim.g.gruvbox_invert_selection = "0"
-  vim.cmd("colorscheme gruvbox")
+
+  vim.g.gruvbox_baby_function_style = "NONE"
+  vim.g.gruvbox_baby_keyword_style = "italic"
+  -- Each highlight group must follow the structure:
+  -- ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
+  -- See also :h highlight-guifg
+  vim.g.gruvbox_baby_highlights = { Normal = { fg = "#123123", bg = "NONE", style = "underline" } }
+  -- Enable telescope theme
+  vim.g.gruvbox_baby_telescope_theme = 0
+  -- Enable transparent mode
+  vim.g.gruvbox_baby_transparent_mode = 1
+
+  vim.g.tokyonight_style = "storm" -- storm | night | day
+  vim.g.tokyonight_italic_functions = true
+  vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+  -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+  vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+
+  --vim.cmd [[colorscheme gruvbox]]
+  vim.cmd [[colorscheme gruvbox-baby]]
+  --vim.cmd [[colorscheme tokyonight]]
 
   local hl = function(thing, opts)
     vim.api.nvim_set_hl(0, thing, opts)
@@ -27,7 +47,9 @@ require('nvim-web-devicons').setup {}
 -- status line
 require('lualine').setup {
   options = {
+    --theme = 'auto',
     theme = 'gruvbox',
+    --theme = 'tokyonight',
   },
 }
 
