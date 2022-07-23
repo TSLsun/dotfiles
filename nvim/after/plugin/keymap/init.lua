@@ -63,10 +63,15 @@ nnoremap("<C-j>", "<C-w><C-j>")
 nnoremap("<C-k>", "<C-w><C-k>")
 nnoremap("<C-l>", "<C-w><C-l>")
 
+nnoremap("<space><Left>", "<Cmd>vertical resize -5<CR>")
+nnoremap("<space><Right>", "<Cmd>vertical resize +5<CR>")
 nnoremap("<space><UP>", "<Cmd>resize +2<CR>")
 nnoremap("<space><Down>", "<Cmd>resize -2<CR>")
-nnoremap("<space><Right>", "<Cmd>vertical resize +5<CR>")
-nnoremap("<space><Left>", "<Cmd>vertical resize -5<CR>")
+
+nnoremap("<leader><Left>", "^")
+nnoremap("<leader><Right>", "$")
+nnoremap("<leader><UP>", "H")
+nnoremap("<leader><Down>", "L")
 
 nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 nnoremap("<leader>x", "<Cmd>!chmod +x %<CR>", { silent = true })
