@@ -13,9 +13,10 @@ nnoremap("<leader><CR>", "<Cmd>source ~/.config/nvim/init.lua<CR>")
 nnoremap("<space>/", "<Cmd>noh<CR>")
 nnoremap("<leader><space>/", "<Cmd>let @/=\"\"<CR>")
 
-nnoremap("<space>=", function()
-  vim.lsp.buf.formatting_sync()
-end)
+nnoremap("<space>=",
+  function() vim.lsp.buf.formatting_sync() end,
+  { desc = "LSP formatting" }
+)
 nnoremap("<leader>pv", "<Cmd>Lexplore 25<CR>")
 --nnoremap("<leader>u", ":UndotreeShow<CR>")
 
@@ -26,8 +27,6 @@ nnoremap("Y", "yg$")
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
 nnoremap("J", "mzJ`z")
-nnoremap("<C-d>", "<C-d>zz")
-nnoremap("<C-u>", "<C-u>zz")
 vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 

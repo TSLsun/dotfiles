@@ -13,33 +13,48 @@ local function on_attach(bufnr)
     if vim.wo.diff then return ']c' end
     vim.schedule(gs.next_hunk)
     return '<Ignore>'
-  end, { expr = true })
+  end, { expr = true, desc = "(gitsigns) go to next_hunk" })
 
   map('n', '[c', function()
     if vim.wo.diff then return '[c' end
     vim.schedule(gs.prev_hunk)
     return '<Ignore>'
-  end, { expr = true })
+  end, { expr = true, desc = "(gitsigns) go to prev_hunk" })
 
-  map('n', '<leader>hs', gs.stage_hunk)
-  map('n', '<leader>hr', gs.reset_hunk)
-  map('v', '<leader>hs', function() gs.stage_hunk({ line("."), line("v") }) end)
-  map('v', '<leader>hr', function() gs.reset_hunk({ line("."), line("v") }) end)
-  map('n', '<leader>hS', gs.stage_buffer)
-  map('n', '<leader>hu', gs.undo_stage_hunk)
-  map('n', '<leader>hR', gs.reset_buffer)
-  map('n', '<leader>hp', gs.preview_hunk)
-  map('n', '<leader>hb', function() gs.blame_line { full = true } end)
-  map('n', '<leader>hd', gs.diffthis)
-  map('n', '<leader>hD', function() gs.diffthis('~') end)
+  map('n', '<Space>hs', gs.stage_hunk, { desc = "stage_hunk" })
+  map('n', '<Space>hr', gs.reset_hunk, { desc = "reset_hunk" })
+  map('v', '<Space>hs',
+    function() gs.stage_hunk({ line("."), line("v") }) end,
+    { desc = "stage_hunk" }
+  )
+  map('v', '<Space>hr',
+    function() gs.reset_hunk({ line("."), line("v") }) end,
+    { desc = "reset_hunk" }
+  )
+  map('n', '<Space>hu', gs.undo_stage_hunk, { desc = "undo_stage_hunk" })
+  map('n', '<Space>hS', gs.stage_buffer, { desc = "stage_buffer" })
+  map('n', '<Space>hR', gs.reset_buffer, { desc = "reset_buffer" })
+  map('n', '<Space>hp', gs.preview_hunk, { desc = "preview_hunk" })
+  map('n', '<Space>hb',
+    function() gs.blame_line { full = true } end,
+    { desc = "(gitsigns) hover blame_line" }
+  )
+  map('n', '<Space>hd', gs.diffthis, { desc = "(gitsigns) diffthis" })
+  map('n', '<Space>hD',
+    function() gs.diffthis('~') end,
+    { desc = "(gitsigns) diffthis('~')" }
+  )
 
   -- Toggles
-  map('n', '<leader>tb', gs.toggle_current_line_blame)
-  map('n', '<leader>td', gs.toggle_deleted)
-  map('n', '<leader>tw', gs.toggle_word_diff)
+  map('n', '<Space>tb', gs.toggle_current_line_blame)
+  map('n', '<Space>td', gs.toggle_deleted)
+  map('n', '<Space>tw', gs.toggle_word_diff)
 
-  map('n', '<leader>hQ', function() gs.setqflist('all') end)
-  map('n', '<leader>hq', gs.setqflist)
+  map('n', '<Space>hQ',
+    function() gs.setqflist('all') end,
+    { desc = "(gitsigns) setqflist('all')" }
+  )
+  map('n', '<Space>hq', gs.setqflist, { desc = "(gitsigns) setqflist" })
 
   map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
@@ -47,22 +62,37 @@ end
 gs.setup {
   on_attach                    = on_attach,
   signs                        = {
-    add          = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn',
-      show_count = false },
-    change       = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn',
-      show_count = false },
-    delete       = { hl = 'GitSignsDelete', text = '_', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn',
-      show_count = true },
-    topdelete    = { hl = 'GitSignsDelete', text = '‾', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn',
-      show_count = true },
-    changedelete = { hl = 'GitSignsChange', text = '~', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn',
-      show_count = true },
+    add          = {
+      hl = 'GitSignsAdd', text = '│',
+      numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn',
+      show_count = false
+    },
+    change       = {
+      hl = 'GitSignsChange', text = '│',
+      numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn',
+      show_count = false
+    },
+    delete       = {
+      hl = 'GitSignsDelete', text = '_',
+      numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn',
+      show_count = true
+    },
+    topdelete    = {
+      hl = 'GitSignsDelete', text = '‾',
+      numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn',
+      show_count = true
+    },
+    changedelete = {
+      hl = 'GitSignsChange', text = '~',
+      numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn',
+      show_count = true
+    },
   },
   count_chars                  = {
     '⒈', '⒉', '⒊', '⒋', '⒌', '⒍', '⒎', '⒏', '⒐',
     '⒑', '⒒', '⒓', '⒔', '⒕', '⒖', '⒗', '⒘', '⒙', '⒚', '⒛',
   },
-  signcolumn                   = true, -- Toggle with `:Gitsigns toggle_signs`
+  signcolumn                   = true, --  Toggle with `:Gitsigns toggle_signs`
   numhl                        = false, -- Toggle with `:Gitsigns toggle_numhl`
   linehl                       = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff                    = false, -- Toggle with `:Gitsigns toggle_word_diff`

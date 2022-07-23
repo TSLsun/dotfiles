@@ -28,7 +28,7 @@ opt.listchars = {
   --eol = "¬",
 }
 opt.signcolumn = "yes"
---opt.colorcolumn = "100"
+opt.colorcolumn = "80"
 
 opt.belloff = "all" -- NO Bells
 opt.mouse = "nv"

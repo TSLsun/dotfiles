@@ -43,30 +43,35 @@ local function on_attach(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
   map("n", "<leader>dl", "<Cmd>Telescope diagnostics<CR>", bufopts)
   map("n", "<leader>lds", "<Cmd>Telescope lsp_document_symbols<CR>", bufopts)
 
   map('n', 'K', vim.lsp.buf.hover, bufopts)
   map('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  --map('n', 'gd', vim.lsp.buf.definition, bufopts)
-  map("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", bufopts)
-  --map('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  map("n", "gi", "<Cmd>Telescope lsp_implementations<CR>", bufopts)
-  --map('n', 'gr', vim.lsp.buf.references, bufopts)
-  map("n", "gr", "<Cmd>Telescope lsp_references<CR>", bufopts)
-  map('n', '<space>vh', vim.lsp.buf.signature_help, bufopts)
-  map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  map('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  map('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  --map('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  map("n", "<space>D", "<Cmd>Telescope lsp_type_definitions<CR>", bufopts)
-  map('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  --map('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  map("n", "<space>ca", "<Cmd>Telescope lsp_code_actions<CR>", bufopts)
-  map('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  map('n', 'gd', vim.lsp.buf.definition, bufopts)
+  map("n", "<leader>gd", "<Cmd>Telescope lsp_definitions<CR>", bufopts)
+  map('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  map("n", "<leader>gi", "<Cmd>Telescope lsp_implementations<CR>", bufopts)
+  map('n', 'gr', vim.lsp.buf.references, bufopts)
+  map("n", "<leader>gr", "<Cmd>Telescope lsp_references<CR>", bufopts)
+  map('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  map("n", "<leader><space>D", "<Cmd>Telescope lsp_type_definitions<CR>", bufopts)
 
+  map('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  map('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  map("n", "<leader><space>ca", "<Cmd>Telescope lsp_code_actions<CR>", bufopts)
+
+  map('n', '<space>vh', vim.lsp.buf.signature_help, bufopts)
+
+  map('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  map('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  map('n', '<leader>wl',
+    function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end,
+    { noremap = true, silent = true, buffer = bufnr, desc = "print list_workspace_folders" }
+  )
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())

@@ -11,7 +11,9 @@ function ColorMyPencils()
   -- Each highlight group must follow the structure:
   -- ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
   -- See also :h highlight-guifg
-  vim.g.gruvbox_baby_highlights = { Normal = { fg = "#123123", bg = "NONE", style = "underline" } }
+  vim.g.gruvbox_baby_highlights = {
+    Normal = { fg = "#123123", bg = "NONE", style = "underline" }
+  }
   -- Enable telescope theme
   vim.g.gruvbox_baby_telescope_theme = 0
   -- Enable transparent mode
@@ -32,11 +34,12 @@ function ColorMyPencils()
   end
 
   hl("SignColumn", { bg = "none", })
-  hl("ColorColumn", { ctermbg = 0, bg = "lightgrey" })
+  hl("ColorColumn", { ctermbg = 0, bg = "#555555" })
   hl("CursorLineNR", { ctermbg = 0, bg = "none" })
   hl("Normal", { bg = "none" })
-  --hl("LineNr", { fg = "#5eacd3" })
-  --hl("netrwDir", { fg = "#5eacd3" })
+  hl("LineNr", { fg = "#5eacd3" })
+  hl("netrwDir", { fg = "#5eacd3" })
+  hl("QuickFixLine", { ctermfg = "none", bg = "#303030" })
 end
 
 ColorMyPencils()
