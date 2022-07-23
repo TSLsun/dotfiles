@@ -3,8 +3,9 @@ env:
 
 window:
   padding:
-    x: 24
+    x: 20
     y: 8
+  dynamic_padding: false
   decorations: buttonless
   opacity: 0.87
   startup_mode: Maximized
@@ -29,8 +30,20 @@ cursor:
     shape: Block
     blinking: Always
   blink_interval: 888
+  unfocused_hollow: true
 
-# colors
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+live_config_reload: true
+
+mouse:
+  hide_when_typing: true
+
 import:
+  ### colors
   - ~/.config/alacritty/theme/tokyo-night.yml
   #- ~/.config/alacritty/theme/tomorrow-night-bright.yml
+
+
