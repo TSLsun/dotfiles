@@ -40,7 +40,8 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- java
+-- java 
+-- set JAVA_HOME to temurin-18.jdk (jdtls requires at least Java 17)
 lspconfig["jdtls"].setup {
   capabilities = capabilities,
   on_attach = on_attach,
@@ -61,47 +62,38 @@ lspconfig["jdtls"].setup {
           "com.sun.*",
           "org.apache.xmlbeans.*"
         },
-
         -- When set to true, method arguments are guessed when a method is selected from as list of code assist proposals.
         guessMethodArguments = false,
       },
-
       configuration = {
         -- Controls whether to exclude extension-generated project settings files (.project, .classpath, .factorypath, .settings/)
         -- from the file explorer.
         checkProjectSettingsExclusions = false,
       },
-
       format = {
         settings = {
           -- Optional formatter profile name from the Eclipse formatter settings.
           profile = "GoogleStyle",
-
           -- Specifies the url or file path to the Eclipse formatter xml settings.
           url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
         },
       },
-
       -- Enable/disable the implementations code lens.
       implementationsCodeLens = {
         enabled = false,
       },
-
       maven = {
         -- Enable/disable download of Maven source artifacts as part of importing Maven projects.
         downloadSources = true,
       },
-
       -- Enable/disable the references code lens.
       referencesCodeLens = {
         enabled = true,
       },
-
       -- Automatically show build status on startup.
       showBuildStatusOnStart = {
         enabled = true,
       },
-
       -- Enable/disable the signature help.
       signatureHelp = {
         enabled = true,
