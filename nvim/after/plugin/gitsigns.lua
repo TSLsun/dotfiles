@@ -1,3 +1,6 @@
+--
+-- Gitsigns setup
+--
 require('gitsigns').setup {
   on_attach                    = require('keymap.gitsigns').on_attach,
   signs                        = {

@@ -1,4 +1,8 @@
--- Colors setup
+--
+-- UI setup
+--
+
+-- color scheme
 vim.opt.termguicolors = true -- Enables 24-bit RGB color support.
 vim.opt.background = "dark"
 
@@ -67,4 +71,4 @@ require('bufferline').setup {
 -- file browser
 require('nvim-tree').setup {}
 
-vim.keymap.set('n', '<leader>cmp', '<Cmd>lua ColorMyPencils()<CR>', { noremap = true })
+--vim.keymap.set('n', '<leader>cmp', '<Cmd>lua ColorMyPencils()<CR>', { noremap = true })

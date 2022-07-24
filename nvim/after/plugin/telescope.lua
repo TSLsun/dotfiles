@@ -1,5 +1,6 @@
-local theme_ivy = { theme = "ivy", sort_lastused = true, }
-
+--
+--Telescope setup
+--
 require("telescope").setup {
   pickers = {
     buffers = { theme = "ivy", sort_lastused = true, },
