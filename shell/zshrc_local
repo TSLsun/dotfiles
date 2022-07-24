@@ -3,8 +3,8 @@
 export PATH="/usr/local/bin:$PATH"
 
 ### For java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-18.jdk/Contents/Home
 export PATH="${JAVA_HOME}/bin:$PATH"
 
 # jdk() {
