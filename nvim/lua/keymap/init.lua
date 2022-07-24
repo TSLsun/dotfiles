@@ -10,6 +10,7 @@ local xnoremap = remap.xnoremap
 
 require('keymap.diffview')
 require('keymap.fugitive')
+require('keymap.lsp')
 require('keymap.nvim-tree')
 require('keymap.telescope')
 

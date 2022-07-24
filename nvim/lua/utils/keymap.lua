@@ -124,14 +124,6 @@ local keymap_set_with_args = function(mode, tbl, ...)
     arg(options)()
   end
 
-  for index, data in ipairs(options) do
-    print(index)
-
-    for key, value in pairs(data) do
-      print('\t', key, value)
-    end
-  end
-
   vim.keymap.set(mode, tbl[1], tbl[2], options)
 end
 

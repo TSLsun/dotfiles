@@ -48,3 +48,5 @@ opt.completeopt = { -- Options for insert mode completion
   'menuone', -- Use the pop-up menu also when there is only one match
   'noselect', -- Do not select a match in the menu
 }
+
+opt.laststatus = 3 -- keep one global status bar 
