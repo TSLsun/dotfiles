@@ -64,4 +64,7 @@ require('bufferline').setup {
   }
 }
 
+-- file browser
+require('nvim-tree').setup {}
+
 vim.keymap.set('n', '<leader>cmp', '<Cmd>lua ColorMyPencils()<CR>', { noremap = true })

@@ -5,12 +5,12 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
     install_path })
-  print "Installing packer close and reopen Neovim..."
+  print('Installing packer close and reopen Neovim...')
   vim.cmd [[packadd packer.nvim]]
 end
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
+local status_ok, packer = pcall(require, 'packer')
 if not status_ok then
   return
 end
@@ -19,7 +19,7 @@ end
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
+      return require('packer.util').float { border = 'rounded' }
     end,
   },
 }
@@ -33,12 +33,12 @@ return require('packer').startup(function(use)
   use 'tpope/vim-repeat' -- Support `.` for vim-surround
   use 'psliwka/vim-smoothie' -- Smooth scrolling
   use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end,
+    'windwp/nvim-autopairs',
+    config = function() require('nvim-autopairs').setup {} end,
   }
   use { -- :MarkdownPreview<CR>
     'iamcco/markdown-preview.nvim',
-    run = function() vim.fn["mkdp#util#install"]() end,
+    run = function() vim.fn['mkdp#util#install']() end,
     ft = { 'markdown' }
   }
   -- Git
@@ -63,7 +63,7 @@ return require('packer').startup(function(use)
   use {
     'glepnir/lspsaga.nvim',
     config = function()
-      require("lspsaga").init_lsp_saga()
+      require('lspsaga').init_lsp_saga()
     end,
   }
   --use 'simrat39/symbols-outline.nvim'
@@ -90,9 +90,10 @@ return require('packer').startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'ThePrimeagen/git-worktree.nvim'
 
-  local nnoremap = require('tslsun.keymap').nnoremap
-  nnoremap('<leader>pi', '<Cmd>PackerInstall<CR>')
-  nnoremap('<leader>pc', '<Cmd>PackerClean<CR>')
+  local remap = require('utils.keymap')
+  local nnoremap = remap.map('n', remap.noremap)
+  nnoremap { '<leader>pi', '<Cmd>PackerInstall<CR>' }
+  nnoremap { '<leader>pc', '<Cmd>PackerClean<CR>' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
