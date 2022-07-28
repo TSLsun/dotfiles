@@ -45,6 +45,8 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
   use 'sindrets/diffview.nvim'
+  use 'TimUntersberger/neogit'
+  use 'rhysd/git-messenger.vim'
   use 'junegunn/gv.vim'
 
   -- UI
