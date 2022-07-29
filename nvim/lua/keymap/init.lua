@@ -12,6 +12,7 @@ require('keymap.diffview')
 require('keymap.fugitive')
 require('keymap.lsp')
 require('keymap.neogit')
+require('keymap.nvim-tmux-navigation')
 require('keymap.nvim-tree')
 require('keymap.telescope')
 
@@ -78,12 +79,13 @@ nnoremap({
 })
 
 -- pane navigation
-nnoremap({
-  { "<C-h>", "<C-w><C-h>" },
-  { "<C-j>", "<C-w><C-j>" },
-  { "<C-k>", "<C-w><C-k>" },
-  { "<C-l>", "<C-w><C-l>" },
-})
+-- set plugin keymaps to support navigation between vim & tmux panes
+--nnoremap({
+  --{ "<C-h>", "<C-w><C-h>" },
+  --{ "<C-j>", "<C-w><C-j>" },
+  --{ "<C-k>", "<C-w><C-k>" },
+  --{ "<C-l>", "<C-w><C-l>" },
+--})
 
 -- pane resizing
 nnoremap { "<leader><Left>", cmd("vertical resize -5") }

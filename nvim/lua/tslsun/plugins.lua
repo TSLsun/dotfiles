@@ -36,6 +36,13 @@ return require('packer').startup(function(use)
     'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup {} end,
   }
+  use { 'alexghergh/nvim-tmux-navigation',
+    config = function()
+      require 'nvim-tmux-navigation'.setup {
+        disable_when_zoomed = true -- defaults to false
+      }
+    end
+  }
   use { -- :MarkdownPreview<CR>
     'iamcco/markdown-preview.nvim',
     run = function() vim.fn['mkdp#util#install']() end,
