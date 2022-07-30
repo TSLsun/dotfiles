@@ -1,8 +1,12 @@
 --
 -- LSP setup
 --
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.setup {}
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "jdtls" ,"sumneko_lua", "dockerls", "jsonls", "yamlls",
+  }
+})
 
 local lspconfig = require('lspconfig')
 -- Use an on_attach function to only map the following keys
@@ -40,7 +44,7 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
--- java 
+-- java
 -- set JAVA_HOME to temurin-18.jdk (jdtls requires at least Java 17)
 lspconfig["jdtls"].setup {
   capabilities = capabilities,
@@ -129,7 +133,19 @@ lspconfig["sumneko_lua"].setup {
   },
 }
 
+lspconfig["dockerls"].setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
 lspconfig["jsonls"].setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  flags = lsp_flags,
+}
+
+lspconfig["yamlls"].setup {
   capabilities = capabilities,
   on_attach = on_attach,
   flags = lsp_flags,

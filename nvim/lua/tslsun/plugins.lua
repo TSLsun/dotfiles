@@ -66,7 +66,8 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
 
   -- LSP
-  use 'williamboman/nvim-lsp-installer'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind.nvim'
   use {
