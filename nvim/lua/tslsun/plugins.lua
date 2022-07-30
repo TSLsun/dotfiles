@@ -70,13 +70,15 @@ return require('packer').startup(function(use)
   use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind.nvim'
+  --use 'simrat39/symbols-outline.nvim'
   use {
     'glepnir/lspsaga.nvim',
-    config = function()
-      require('lspsaga').init_lsp_saga()
-    end,
+    config = function() require('lspsaga').init_lsp_saga() end,
   }
-  --use 'simrat39/symbols-outline.nvim'
+  use {
+    "folke/trouble.nvim",
+    config = function() require("trouble").setup {} end,
+  }
 
   -- Completion
   use 'hrsh7th/nvim-cmp'
