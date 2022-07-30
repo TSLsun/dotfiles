@@ -34,3 +34,6 @@ else
 fi
 unset __conda_setup
 ### <<< conda initialize <<<
+
+### set nvim to open files from ranger
+export EDITOR="nvim"

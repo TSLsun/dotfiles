@@ -6,11 +6,7 @@ else
 fi
 
 # safer remove
-if (( ${+commands[trash]} )); then
-    alias rm='trash'
-else
-    alias rm='rm -i'
-fi
+alias rm='rm -i'
 
 if (( ${+commands[bat]} )); then
     # bat: cat clone with wings

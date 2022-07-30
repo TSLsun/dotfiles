@@ -22,12 +22,18 @@ brew "fzf"
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
 # Multi-platform support library with a focus on asynchronous I/O
 brew "libuv"
 # Text-to-HTML conversion tool
 brew "markdown"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Manage multiple Node.js versions
 brew "nvm"
+# File browser
+brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Tools for market analysis
@@ -50,6 +56,8 @@ brew "yarn"
 brew "zsh"
 # A simple terminal UI for git commands, written in Go
 brew "jesseduffield/lazygit/lazygit"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
 # App to build and share containerized applications and microservices
