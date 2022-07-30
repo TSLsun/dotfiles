@@ -30,7 +30,6 @@ function M.on_attach(bufnr)
 
   nnoremap { '<space>rn', vim.lsp.buf.rename, bufopts }
   nnoremap { '<space>ca', vim.lsp.buf.code_action, bufopts }
-  nnoremap { "<leader><space>ca", cmd("Telescope lsp_code_actions"), bufopts }
 
   nnoremap { '<space>vh', vim.lsp.buf.signature_help, bufopts }
 
