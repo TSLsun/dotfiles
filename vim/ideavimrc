@@ -25,8 +25,9 @@ Plug 'preservim/nerdtree'
     "o->l - Open files, directories and bookmarks
     """ https://github.com/JetBrains/ideavim/wiki/NERDTree-support
 Plug 'machakann/vim-highlightedyank' " show highlight when yank
+Plug 'easymotion/vim-easymotion'
+Plug 'michaeljsmith/vim-indent-object'
 "Plug 'terryma/vim-multiple-cursors'
-"Plug 'easymotion/vim-easymotion'
 
 """ Settings -------------------------------
 set showmode
@@ -37,7 +38,7 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase       " Override the 'ignorecase' option if the search pattern contains upper case characters
-set scrolloff=5
+set scrolloff=4
 
 """ Don't use Ex mode, use Q for formatting.
 map Q gq
@@ -48,26 +49,34 @@ nnoremap <C-z> :action ToggleDistractionFreeMode<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-nnoremap \w :w<cr>
-nnoremap \q :q<cr>
+nnoremap \w :w<CR>
+nnoremap \q :q<CR>
 nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 nnoremap \c :action Assertions2AssertJ.ConvertFile<CR>
+vnoremap \s :action SurroundWith<CR>
+
+" toggle relativenumber
+nmap <A-L> :set relativenumber!<CR>
 
 " clear the search buffer when hitting return
- nnoremap <leader>/ :nohlsearch<cr>
+nnoremap <leader>/ :nohlsearch<CR>
+"nnoremap \<leader>/ :let @/=""<CR> " seems not working in ideaVim
 
 " To copy text to the end-of-line, press Y.
 " This mapping sets up Y to be consistent with
 " the C and D operators, which act from the cursor
 " to the end of the line. The default behavior of Y
 " is to yank the whole line.
-nnoremap Y y$
+nnoremap Y yg$
 
 """ Shortcut for copying to/from System Clipboard
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>P "+P
+nmap \y "+y
+vmap \y "+y
+nmap \d "+d
+vmap \d "+d
+nmap \p "+p
+nmap \P "+P
 
 " Greatest remap EVER!!
 " Let me explain, this remap while in visual mode
@@ -75,7 +84,7 @@ nmap <Leader>P "+P
 " with what is in the register BUT it will YANK (delete) it
 " to a VOID register. Meaning I still have what I originally had
 " when I pasted. I don't loose the previous thing I YANKED!
-vnoremap <leader>p "_dP
+vnoremap \p "_dP
 
 """ Split windows
 sethandler <C-j> a:vim
@@ -89,10 +98,6 @@ nnoremap <C-\> :action SplitVertically<CR>
 nnoremap <C--> :action SplitHorizontally<CR>
 nnoremap <C-=> :action Unsplit<CR>
 nnoremap <C-m> :action MoveEditorToOppositeTabGroup<CR>
-
-""" Navigate tab
-nnoremap <TAB>      :action PreviousTab<CR>
-nnoremap <S-TAB>    :action NextTab<CR>
 
 """ Navigate window
 nnoremap <leader>en :action EditSourceInNewWindow<CR>
@@ -108,35 +113,35 @@ nnoremap <leader>zo :action ExpandAllRegions<CR>
 
 """ Common usages
 nnoremap <leader>R :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>R :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>= :action ReformatCode<CR>
 nnoremap <leader>o :action OptimizeImports<CR>
 nnoremap <leader>l :action RecentLocations<CR>
 
+nnoremap \u :action QuickJavaDoc<CR>
 nnoremap \i :action QuickImplementations<CR>
-nnoremap \o :action QuickJavaDoc<CR>
-nnoremap \p :action QuickTypeDefinition<CR>
+nnoremap \o :action QuickTypeDefinition<CR>
+
+nnoremap \m :action FileStructurePopup<CR>
 
 """ Source navigation
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
-nnoremap gc :action GotoClass<CR>
+nnoremap <leader>gc :action GotoClass<CR>
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gp :action GotoSuperMethod<CR>
-nnoremap gT :action GotoTest<CR>
-nnoremap gu :action ShowUsages<CR>
-nnoremap gb :action Back<CR>
-nnoremap gf :action Forward<CR>
+nnoremap <leader>gt :action GotoTest<CR>
+nnoremap <leader>gu :action ShowUsages<CR>
 nnoremap gr :action RecentFiles<CR>
-nnoremap ge :action GotoNextError<CR>
-nnoremap gE :action GotoPreviousError<CR>
 
 """ Running and Debugging
 nnoremap \f :action ChooseRunConfiguration<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
-nnoremap <leader>rr :action ContextRun<CR>
+nnoremap <leader>rc zz:action ReformatCode<CR>mmgg]]:action ContextRun<CR>`mzz
+nnoremap <leader>rr zz:action ReformatCode<CR>zz:action Rerun<CR>
+nnoremap <leader>rt :action ContextRun<CR>
 nnoremap <leader>rd :action ContextDebug<CR>
-nnoremap <leader>rc :action RunClass<CR>
 nnoremap <leader>rf :action RerunFailedTests<CR>
 
 """ ToolWindow
@@ -156,3 +161,68 @@ nnoremap <C-p> :action JumpToLastWindow<CR>
 
 """ Terminal
 nnoremap <leader>nt :action Terminal.OpenInTerminal<CR>
+
+""" Setup from joey
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+imap jj <Esc>
+imap <C-a> <Esc>ma<CR>ggVG
+nmap <BS> a<BS>
+
+nmap z; A;<Esc>
+imap z; <Esc>A;<Esc>
+
+nmap zyp "0p
+nmap zyP "0P
+imap zyp <Esc>"0pa
+imap zyP <Esc>"0Pa
+
+""" Copy previous @Test method
+imap <F1> <Esc>mby?@Test<CR>`bp?void<CR>w:noh<CR>
+nmap <leader>tt mby?@Test<CR>`bp?void<CR>w:noh<CR>
+
+""" Navigation
+nmap <leader><leader> :action AceAction<CR>
+nmap <leader>\ :action AceTargetAction<CR>
+nmap zh ^
+imap zh <Esc>I
+nmap zl $
+imap zl <End>
+nmap zk :action Back<CR>
+imap zk <Esc>:action Back<CR>
+nmap zj :action Forward<CR>
+imap zj <Esc>:action Forward<CR>
+nmap zn :action GotoNextError<CR>
+imap zn <Esc>:action GotoNextError<CR>
+nmap zN :action GotoPreviousError<CR>
+imap zN <Esc>:action GotoPreviousError<CR>
+"nmap <M-k> :action CheckinProject<CR>
+
+" refactor
+nmap <leader>rn :action RenameElement<CR>
+nmap <leader>ri :action Inline<CR>
+nmap <leader>ro :action Move<CR>
+
+nmap <leader>rf :action IntroduceField<CR>
+vmap <leader>rf <Esc>:action IntroduceField<CR>
+nmap <leader>rp :action IntroduceParameter<CR>
+nmap <leader>sp vi":action IntroduceParameter<CR>
+nmap <leader>rv :action IntroduceVariable<CR>
+vmap <leader>rv <Esc>:action IntroduceVariable<CR>
+vmap M :action ExtractMethod<CR>
+
+
+nmap <C-S-k> :action MoveLineUp<CR>:action VimAutoIndentLines<CR>
+vmap <C-S-k> :action MoveLineUp<CR>:action VimAutoIndentLines<CR>
+imap <C-S-k> <Esc>:action MoveLineUp<CR>:action VimAutoIndentLines<CR>
+nmap <C-S-j> :action MoveLineDown<CR>:action VimAutoIndentLines<CR>
+vmap <C-S-j> :action MoveLineDown<CR>:action VimAutoIndentLines<CR>
+imap <C-S-j> <Esc>:action MoveLineDown<CR>:action VimAutoIndentLines<CR>
+"map <M-d> :action EditorDuplicateLines<CR>
+"imap <M-d> <Esc>:action EditorDuplicateLines<CR>
+nmap <A-d> :action EditorDeleteLine<CR>
+vmap <A-d> :action EditorDeleteLine<CR>
+imap <A-d> <Esc>:action EditorDeleteLine<CR>
+
+"nmap <M-N> :action Generate<CR>
+nmap <C-S-n> :action NewElementSamePlace<CR>
