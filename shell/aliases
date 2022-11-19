@@ -40,3 +40,9 @@ alias stock='conda activate ~/miniconda3/envs/stock'
 # open applications
 alias idea='open -na "IntelliJ IDEA CE"'
 
+# c++
+alias g++='/usr/local/bin/g++-12 -std=c++17'
+
+# other aliases
+alias kick='cd ~/projects/cpp_practices/google_kickout'
+
