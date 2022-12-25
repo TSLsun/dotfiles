@@ -6,7 +6,7 @@
 vim.opt.termguicolors = true -- Enables 24-bit RGB color support.
 vim.opt.background = "dark"
 
-function ColorMyPencils()
+function ColorMyPencils(colorscheme)
   vim.g.gruvbox_contrast_dark = "hard"
   vim.g.gruvbox_invert_selection = "0"
 
@@ -16,7 +16,7 @@ function ColorMyPencils()
   -- ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
   -- See also :h highlight-guifg
   --vim.g.gruvbox_baby_highlights = {
-    --Normal = { fg = "#123123", bg = "NONE", style = "underline" }
+  --  Normal = { fg = "#123123", bg = "NONE", style = "underline" }
   --}
   -- Enable telescope theme
   vim.g.gruvbox_baby_telescope_theme = 0
@@ -29,9 +29,9 @@ function ColorMyPencils()
   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
   vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 
-  --vim.cmd [[colorscheme gruvbox]]
-  vim.cmd [[colorscheme gruvbox-baby]]
-  --vim.cmd [[colorscheme tokyonight]]
+  colorscheme = colorscheme or "gruvbox-baby"
+  vim.cmd.colorscheme(colorscheme)
+  --other installed colorscheme: "gruvbox", "tokyonight"
 
   local hl = function(thing, opts)
     vim.api.nvim_set_hl(0, thing, opts)
@@ -42,6 +42,7 @@ function ColorMyPencils()
   hl("CursorLineNR", { ctermbg = 0, bg = "none" })
   hl("Search", { bg = "White" })
   hl("Normal", { bg = "none" })
+  hl("NormalFloat", { bg = "none" })
   hl("LineNr", { fg = "#5eacd3" })
   hl("netrwDir", { fg = "#5eacd3" })
   hl("QuickFixLine", { ctermfg = "none", bg = "#303030" })
