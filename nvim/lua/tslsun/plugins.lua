@@ -66,6 +66,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use { 'akinsho/bufferline.nvim', tag = 'v2.*' }
   use 'kyazdani42/nvim-tree.lua'
+  use 'folke/zen-mode.nvim'
 
   -- LSP
   use {
