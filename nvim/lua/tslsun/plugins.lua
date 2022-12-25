@@ -27,6 +27,7 @@ packer.init {
 return require('packer').startup(function(use)
   -- Put all plugins here
   use 'wbthomason/packer.nvim'
+
   -- Utilities
   use 'preservim/nerdcommenter' -- [count]<leader>c<space> <Plug>NERDCommenterToggle<CR>
   use 'tpope/vim-surround' -- ys, cs, ds, S(VISUAL mode)
@@ -48,6 +49,7 @@ return require('packer').startup(function(use)
     run = function() vim.fn['mkdp#util#install']() end,
     ft = { 'markdown' }
   }
+
   -- Git
   use 'tpope/vim-fugitive'
   use 'lewis6991/gitsigns.nvim'
@@ -66,9 +68,27 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
 
   -- LSP
-  use 'williamboman/mason.nvim'
-  use 'williamboman/mason-lspconfig.nvim'
-  use 'neovim/nvim-lspconfig'
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    requires = {
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
+
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
+
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
+    }
+  }
   use 'onsails/lspkind.nvim'
   --use 'simrat39/symbols-outline.nvim'
   use {
@@ -79,16 +99,6 @@ return require('packer').startup(function(use)
     "folke/trouble.nvim",
     config = function() require("trouble").setup {} end,
   }
-
-  -- Completion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-
-  -- LuaSnip
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
 
   -- Neovim Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

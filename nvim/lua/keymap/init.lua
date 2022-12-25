@@ -28,7 +28,7 @@ nnoremap { '<leader><space>/', cmd('let @/=""') }
 nnoremap {
   '<space>=',
   function()
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format({ async = false })
     print("Done formatted...")
   end,
   opts("LSP formatting")
