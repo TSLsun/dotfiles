@@ -12,7 +12,7 @@ Plug 'tpope/vim-commentary'          " gcc, gc + motion, v_gc
 Plug 'preservim/nerdtree'
     let g:NERDTreeMapActivateNode='l'
     let g:NERDTreeMapJumpParent='h'
-    nnoremap <C-n> :NERDTree <CR>
+    nnoremap <C-n> :action SelectInProjectView <CR>
     "Esc - Back to editor, will keep the NERDTree window
     "q - Close the NERDTree window
     "t/T - Open file in new tab (T: keep cursor in NERDTree)
@@ -125,6 +125,15 @@ nnoremap \o :action QuickTypeDefinition<CR>
 nnoremap \m :action FileStructurePopup<CR>
 
 """ Source navigation
+"nnoremap <M-]> :action Forward<CR>
+"nnoremap <M-[> :action Back<CR>
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+    "<A-M-z>: rollback change
+    "<A-M-a>: stage change
+    "<M-d>: show diff
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
 nnoremap <leader>gc :action GotoClass<CR>
@@ -133,7 +142,7 @@ nnoremap gd :action GotoDeclaration<CR>
 nnoremap gp :action GotoSuperMethod<CR>
 nnoremap <leader>gt :action GotoTest<CR>
 nnoremap <leader>gu :action ShowUsages<CR>
-nnoremap gr :action RecentFiles<CR>
+"nnoremap gr :action RecentFiles<CR>
 
 """ Running and Debugging
 nnoremap \f :action ChooseRunConfiguration<CR>
@@ -149,6 +158,7 @@ nnoremap <leader>sw :action ActivateStructureToolWindow<CR>
 nnoremap <leader>fw :action ActivateFindToolWindow<CR>
 nnoremap <leader>rw :action ActivateRunToolWindow<CR>
 nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
+nnoremap <leader>Dw :action ActivateDatabaseToolWindow<CR>
 nnoremap <leader>pw :action ActivateProblemsViewToolWindow<CR>
 nnoremap <leader>lw :action ActivateSonarLintToolWindow<CR>
 nnoremap <leader>tw :action ActivateTerminalToolWindow<CR>
@@ -176,10 +186,13 @@ nmap zyp "0p
 nmap zyP "0P
 imap zyp <Esc>"0pa
 imap zyP <Esc>"0Pa
+vmap zyp "0p
+vmap zyP "0P
 
 """ Copy previous @Test method
 imap <F1> <Esc>mby?@Test<CR>`bp?void<CR>w:noh<CR>
-nmap <leader>tt mby?@Test<CR>`bp?void<CR>w:noh<CR>
+nmap <leader>tt mby?@Test<CR>`bpnnw<CR>w:noh<CR>
+nmap <leader>ts mby?@Test<CR>`bpnn3w:noh<CR>
 
 """ Navigation
 nmap <leader><leader> :action AceAction<CR>
@@ -188,20 +201,20 @@ nmap zh ^
 imap zh <Esc>I
 nmap zl $
 imap zl <End>
-nmap zk :action Back<CR>
-imap zk <Esc>:action Back<CR>
-nmap zj :action Forward<CR>
-imap zj <Esc>:action Forward<CR>
-nmap zn :action GotoNextError<CR>
-imap zn <Esc>:action GotoNextError<CR>
-nmap zN :action GotoPreviousError<CR>
-imap zN <Esc>:action GotoPreviousError<CR>
+"" zk zj navigation are buggy, use cmd + ]/[ instead
+"nmap zk :action Back<CR>
+"imap zk <Esc>:action Back<CR>
+"nmap zj :action Forward<CR>
+"imap zj <Esc>:action Forward<CR>
+"imap zn <Esc>:action GotoNextError<CR>
+"imap zN <Esc>:action GotoPreviousError<CR>
+"nmap zgc zz:action CheckinProject<CR>
 "nmap <M-k> :action CheckinProject<CR>
 
 " refactor
 nmap <leader>rn :action RenameElement<CR>
 nmap <leader>ri :action Inline<CR>
-nmap <leader>ro :action Move<CR>
+nmap <leader>rm :action Move<CR>
 
 nmap <leader>rf :action IntroduceField<CR>
 vmap <leader>rf <Esc>:action IntroduceField<CR>
@@ -211,6 +224,26 @@ nmap <leader>rv :action IntroduceVariable<CR>
 vmap <leader>rv <Esc>:action IntroduceVariable<CR>
 vmap M :action ExtractMethod<CR>
 
+"nmap zra zz:action RearrangeCode<CR>zz:action ReformatCode<CR>zz:action Rerun<CR>
+"imap zra <Esc>zz:action RearrangeCode<CR>zz:action ReformatCode<CR>zz:action Rerun<CR>
+"nmap zrn :action RenameElement<CR>
+"nmap zri :action Inline<CR>
+"imap zri <Esc>:action Inline<CR>
+"nmap zro :action Move<CR>
+"imap zro <Esc>:action Move<CR>
+"nmap zrt :action SearchEverywhere<CR>
+"imap zrt <Esc>:action SearchEverywhere<CR>
+
+"nmap zrf :action IntroduceField<CR>
+"imap zrf <Esc>:action IntroduceField<CR>
+"nmap zrp :action IntroduceParameter<CR>
+"imap zrp <Esc>:action IntroduceParameter<CR>
+"nmap zsp vi":action IntroduceParameter<CR>
+"nmap zrv :action IntroduceVariable<CR>
+"vmap zrv <Esc>:action IntroduceVariable<CR>
+"imap zrv <Esc>:action IntroduceVariable<CR>
+"vmap zrm :action ExtractMethod<CR>
+"vmap M :action ExtractMethod<CR>
 
 nmap <C-S-k> :action MoveLineUp<CR>:action VimAutoIndentLines<CR>
 vmap <C-S-k> :action MoveLineUp<CR>:action VimAutoIndentLines<CR>
