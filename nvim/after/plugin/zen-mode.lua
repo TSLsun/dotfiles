@@ -8,8 +8,10 @@ require("zen-mode").setup {
   },
 }
 
-vim.keymap.set("n", "<space>zz", function()
+function ToggleZenMode()
   require("zen-mode").toggle()
   vim.wo.wrap = false
   ColorMyPencils()
-end)
+end
+
+vim.keymap.set("n", "<space>zz", ToggleZenMode)
