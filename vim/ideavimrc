@@ -175,7 +175,7 @@ nnoremap <leader>nt :action Terminal.OpenInTerminal<CR>
 """ Setup from joey
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
-imap jj <Esc>
+imap jk <Esc>
 imap <C-a> <Esc>ma<CR>ggVG
 nmap <BS> a<BS>
 

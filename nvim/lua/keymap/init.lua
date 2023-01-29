@@ -18,6 +18,7 @@ require('keymap.telescope')
 
 nnoremap { '<leader>w', cmd('write') }
 nnoremap { '<leader>q', cmd('quit') }
+nnoremap { '<leader>qa', cmd('quitall') }
 nnoremap { '<leader><CR>', cmd('source ~/.config/nvim/init.lua') }
 
 -- clear search highlighter
@@ -60,8 +61,15 @@ nnoremap { "<leader>d", "\"_d" }
 vnoremap { "<leader>d", "\"_d" }
 
 inoremap { "<C-c>", "<Esc>" }
+inoremap { "jk", "<Esc>" }
 nnoremap { "Q", "<nop>" }
 nnoremap { "<space>", "<nop>" } -- use space as a second leader
+
+nnoremap({
+  { "<C-\\>", cmd("vsplit") },
+  { "<C-|>", cmd("vsplit") },
+  { "<C-_>", cmd("split") } -- <C--> not work
+})
 
 -- tab navigation
 nmap { "<S-Tab>", cmd("tabprev") }
@@ -80,12 +88,7 @@ nnoremap({
 
 -- pane navigation
 -- set plugin keymaps to support navigation between vim & tmux panes
---nnoremap({
-  --{ "<C-h>", "<C-w><C-h>" },
-  --{ "<C-j>", "<C-w><C-j>" },
-  --{ "<C-k>", "<C-w><C-k>" },
-  --{ "<C-l>", "<C-w><C-l>" },
---})
+-- => nvim-tmux-navigation
 
 -- pane resizing
 nnoremap { "<leader><Left>", cmd("vertical resize -5") }

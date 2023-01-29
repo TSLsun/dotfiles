@@ -15,7 +15,7 @@ nnoremap { '<space>e', vim.diagnostic.open_float, opts("diagnostic open_float", 
 function M.on_attach(bufnr)
   local bufopts = { silent = true, buffer = bufnr }
   nnoremap { '<leader>dl', cmd("Telescope diagnostics"), bufopts }
-  nnoremap { '<leader>lds', cmd("Telescope lsp_document_symbols"), bufopts }
+  nnoremap { '<leader>m', cmd("Telescope lsp_document_symbols"), bufopts }
 
   nnoremap { 'K', vim.lsp.buf.hover, bufopts }
   nnoremap { 'gD', vim.lsp.buf.declaration, bufopts }
