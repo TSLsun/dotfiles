@@ -33,5 +33,9 @@
     # tmux
     ~/.tmux.conf: tmux/tmux.conf
 
+    # window management
+    ~/.config/yabai: config/yabai
+    ~/.config/skhd: config/skhd
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

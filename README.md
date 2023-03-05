@@ -20,7 +20,7 @@ cd dotfiles && ./install
 
 ### zsh
 
-- adopt [zimfw/zimfw](https://github.com/zimfw/zimfw) to manage zsh 
+- adopt [zimfw/zimfw](https://github.com/zimfw/zimfw) to manage zsh
   - maintain `.zimrc` for zsh modules
   - usages:
     - Add new modules to `~/.zimrc`: run `zimfw install`
@@ -39,3 +39,16 @@ cd dotfiles && ./install
 ### tmux
 
 - tpm
+
+### window management
+
+- install [koekeishiya/yabai](https://github.com/koekeishiya/yabai) and [koekeishiya/skhd](https://github.com/koekeishiya/skhd)
+  ```sh
+  brew install koekeishiya/formulae/yabai
+  brew install koekeishiya/formulae/skhd
+  ```
+- start service
+  ```sh
+  brew services start yabai
+  brew services start skhd
+  ```

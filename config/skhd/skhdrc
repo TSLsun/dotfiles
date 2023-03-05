@@ -1,0 +1,63 @@
+# navigate focus within windows
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+# swap managed window
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+# move managed window toward
+ctrl + alt - h : yabai -m window --warp west
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - l : yabai -m window --warp east
+
+# rotate tree
+alt - r : yabai -m space --rotate 90
+shift + alt - r : yabai -m space --rotate 270
+
+# toggle window fullscreen zoom
+alt - z : yabai -m window --toggle zoom-fullscreen
+
+# float / unfloat window and center on screen
+alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# toggle padding and gap
+alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+# toggle window split type
+alt - e : yabai -m window --toggle split
+
+# balance size of windows
+shift + alt - 0 : yabai -m space --balance
+
+# move window and focus desktop
+shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+
+# recent focus window
+alt - tab : yabai -m window --focus recent
+
+# switch focus to monitor
+alt - n : yabai -m display --focus next
+alt - p : yabai -m display --focus prev
+
+# send window to monitor and follow focus
+shift + alt - n : yabai -m window --display next; yabai -m display --focus next
+shift + alt - p : yabai -m window --display prev; yabai -m display --focus prev
+
+# start/stop/restart yabai
+ctrl + alt - s : brew services start yabai
+ctrl + alt - q : brew services stop yabai
+ctrl + alt - r : brew services restart yabai
