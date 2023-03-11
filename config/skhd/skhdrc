@@ -33,7 +33,7 @@ alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 alt - e : yabai -m window --toggle split
 
 # balance size of windows
-shift + alt - 0 : yabai -m space --balance
+alt - 0 : yabai -m space --balance
 
 # move window and focus desktop
 shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
@@ -45,6 +45,7 @@ shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
 shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
 shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
 shift + alt - 9 : yabai -m window --space 9; yabai -m space --focus 9
+shift + alt - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
 # recent focus window
 alt - tab : yabai -m window --focus recent
@@ -53,6 +54,10 @@ alt - tab : yabai -m window --focus recent
 alt - n : yabai -m display --focus next
 alt - p : yabai -m display --focus prev
 
+# Cycle windows forwards and backwards in focused stack only
+alt - right : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+alt - left  : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+
 # send window to monitor and follow focus
 shift + alt - n : yabai -m window --display next; yabai -m display --focus next
 shift + alt - p : yabai -m window --display prev; yabai -m display --focus prev
@@ -60,4 +65,7 @@ shift + alt - p : yabai -m window --display prev; yabai -m display --focus prev
 # start/stop/restart yabai
 ctrl + alt - s : brew services start yabai
 ctrl + alt - q : brew services stop yabai
-ctrl + alt - r : brew services restart yabai
+#ctrl + alt - r : brew services restart yabai; brew services restart skhd
+ctrl + alt - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai";\
+                 launchctl kickstart -k "gui/${UID}/homebrew.mxcl.skhd"
+
