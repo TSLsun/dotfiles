@@ -1,0 +1,51 @@
+
+[cursor]
+blink_interval = 888
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 20.0
+
+[font.bold]
+family = "Hack Nerd Font Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Hack Nerd Font Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Hack Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.87
+startup_mode = "Maximized"
+
+[window.padding]
+x = 20
+y = 8
+
+[general]
+live_config_reload = true
+import = ["/Users/tslsun/.config/alacritty/theme/tokyo-night.toml"]
