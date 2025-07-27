@@ -17,6 +17,9 @@
     ~/.zimrc: shell/zimrc
     ~/.p10k.zsh: shell/p10k.zsh
 
+    # Brewfile
+    ~/.config/Brewfile: Brewfile
+
     # git
     ~/.gitconfig: git/gitconfig
     ~/.gitconfig_local: git/gitconfig_local
@@ -40,3 +43,7 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - 
+    command: brew bundle --describe --file ~/.config/Brewfile
+    stdout: true
+    description: brew install from Brewfile
