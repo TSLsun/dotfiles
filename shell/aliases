@@ -13,10 +13,10 @@ if (( ${+commands[bat]} )); then
     alias cat='bat'
 fi
 
-if command -v exa 2>&1 >/dev/null; then
-    # exa: a modern replacement for ls
-    alias ls='exa'
-    alias l='exa --long --group --git'
+if command -v eza 2>&1 >/dev/null; then
+    # eza: a modern replacement for ls
+    alias ls='eza'
+    alias l='eza --long --group --git'
 fi
 
 if (( ${+commands[rg]} )); then
