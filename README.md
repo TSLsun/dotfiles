@@ -9,7 +9,35 @@ my dotfiles
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-2. Install dotfiles and setups
+2. Setup SSH for github (ref: [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh))
+
+- generate a new key
+
+```sh
+ssh-keygen -t ed25519 -C $MY_EMAIL
+
+eval "$(ssh-agent -s)"
+```
+
+```sh
+touch ~/.ssh/config
+```
+
+```
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+```
+
+- copy public key and paste to github Settings > SSH and GPG keys
+
+```sh
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+
+3. Clone dotfiles and install
 
 ```sh
 mkdir Repos
@@ -17,7 +45,7 @@ cd Repos
 ```
 
 ```sh
-git clone https://github.com/TSLsun/dotfiles.git
+git clone git@github.com:TSLsun/dotfiles.git
 cd dotfiles && ./install
 ```
 
