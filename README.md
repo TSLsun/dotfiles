@@ -4,12 +4,28 @@ my dotfiles
 
 ## Install
 
+1. Install homebrew
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+2. Install dotfiles and setups
+
+```sh
+mkdir Repos
+cd Repos
+```
+
 ```sh
 git clone https://github.com/TSLsun/dotfiles.git
 cd dotfiles && ./install
 ```
 
 ## Quick Notes
+
+### Homebrew
+
+- To update the Brewfile: `brew bundle dump --describe --force --file ~/.config/Brewfile`
 
 ### dotbot
 
