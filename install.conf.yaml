@@ -20,6 +20,7 @@
     # git
     ~/.gitconfig: git/gitconfig
     ~/.gitconfig_local: git/gitconfig_local
+    ~/.git/git-editor: git/git-editor.sh
     ~/.git/git-clone-bare-for-worktrees.sh: git/git-clone-bare-for-worktrees.sh
     "~/Library/Application Support/lazygit/config.yml": git/lazygit.config.yml
 

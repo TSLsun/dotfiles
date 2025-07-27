@@ -1,5 +1,5 @@
 [core]
-    editor = nvim
+    editor = "$HOME/.git/git-editor"
     pager = delta
 
 [interactive]
