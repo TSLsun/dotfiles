@@ -49,6 +49,18 @@ git clone git@github.com:TSLsun/dotfiles.git
 cd dotfiles && ./install
 ```
 
+4. Install tmux plugins
+
+- Create a new tmux session:
+```sh
+tmux new -s 🔅
+```
+
+- While using tmux install tmux plugins by:
+```
+C-a + I
+```
+
 ## Quick Notes
 
 ### Homebrew
@@ -82,7 +94,15 @@ cd dotfiles && ./install
 
 ### tmux
 
-- tpm
+- [tmux-plugins/tpm](https://github.com/tmux-plugins/tpm)
+
+  - `prefix + I`:
+    - Installs new plugins from GitHub or any other git repository
+    - Refreshes TMUX environment
+  - `prefix + U`:
+    - updates plugin(s)
+  - `prefix + alt + u` (custom: `prefix + C-c`):
+    - remove/uninstall plugins not on the plugin list
 
 ### window management
 
