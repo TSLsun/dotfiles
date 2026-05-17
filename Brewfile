@@ -79,10 +79,6 @@ cask "shottr"
 cask "skim"
 # Music streaming service
 cask "spotify"
-# JDK from the Eclipse Foundation (Adoptium)
-cask "temurin"
-# JDK from the Eclipse Foundation (Adoptium)
-cask "temurin@21"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
