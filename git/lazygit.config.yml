@@ -1,10 +1,9 @@
 # config.yml should be placed at `~/Library/Application\ Support/lazygit/config.yml`
 # set lazygit to use delta for diff preview
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never 
-
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 keybinding:
   universal:
     appendNewline: '<tab>'
