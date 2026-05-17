@@ -46,3 +46,5 @@ alias g++='/usr/local/bin/g++-12 -std=c++17'
 # other aliases
 alias kick='cd ~/projects/cpp_practices/google_kickout'
 
+alias c='claude'
+alias cav='claude agents'
