@@ -21,9 +21,6 @@
 
     # Brewfile
     ~/.config/Brewfile: Brewfile
-    ~/.config/Brewfile.local:
-      path: Brewfile.local
-      ignore-missing: true
 
     # git
     ~/.gitconfig: git/gitconfig
@@ -51,15 +48,15 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   -
-    command: brew bundle --describe --file ~/.config/Brewfile
+    command: brew bundle --no-upgrade --describe --file ~/.config/Brewfile
     stdout: true
-    description: brew install from Brewfile
+    description: brew install from Brewfile (missing packages only)
   -
-    command: '[ -f ~/.config/Brewfile.local ] && brew bundle --file ~/.config/Brewfile.local || true'
+    command: '[ -f Brewfile.local ] && brew bundle --no-upgrade --file Brewfile.local || true'
     stdout: true
     description: brew install from Brewfile.local (if present)
   -
-    command: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    command: '[ -d ~/.tmux/plugins/tpm ] || git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'
     stdout: true
     description: Install Tmux Plugin Manager (tpm)
   -

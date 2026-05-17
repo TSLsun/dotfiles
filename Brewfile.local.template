@@ -1,9 +1,15 @@
 # Machine-specific Homebrew packages
 # Copy this file to Brewfile.local and uncomment what you need.
 # Brewfile.local is gitignored — never committed.
+#
+# Note: casks that use .pkg installers (JDKs, system tools) require sudo
+# and should live here rather than in the shared Brewfile, so that
+# ./install runs non-interactively on new machines.
 
-# brew "openjdk@21"
+# JDK — uncomment the version(s) you need (also set JAVA_HOME in zshrc_local)
+# cask "temurin"      # latest LTS
+# cask "temurin@21"   # Java 21
+# cask "temurin@17"   # Java 17
 
-# cask "docker"
-# cask "zoom"
+# Other machine-specific tools
 # cask "microsoft-teams"
