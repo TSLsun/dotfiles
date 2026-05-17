@@ -21,9 +21,6 @@
 
     # Brewfile
     ~/.config/Brewfile: Brewfile
-    ~/.config/Brewfile.local:
-      path: Brewfile.local
-      ignore-missing: true
 
     # git
     ~/.gitconfig: git/gitconfig
@@ -55,7 +52,7 @@
     stdout: true
     description: brew install from Brewfile (missing packages only)
   -
-    command: '[ -f ~/.config/Brewfile.local ] && brew bundle --no-upgrade --file ~/.config/Brewfile.local || true'
+    command: '[ -f Brewfile.local ] && brew bundle --no-upgrade --file Brewfile.local || true'
     stdout: true
     description: brew install from Brewfile.local (if present)
   -
