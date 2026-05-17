@@ -49,3 +49,8 @@ y = 8
 [general]
 live_config_reload = true
 import = ["/Users/tslsun/.config/alacritty/theme/tokyo-night.toml"]
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
