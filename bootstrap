@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -e
+
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+echo "==> Dotfiles Bootstrap"
+echo ""
+
+# Copy templates to local files if not already present
+for tmpl in shell/zshrc_local git/gitconfig_local Brewfile.local; do
+  local_file="$DOTFILES_DIR/$tmpl"
+  template="$local_file.template"
+  if [ ! -f "$local_file" ] && [ -f "$template" ]; then
+    cp "$template" "$local_file"
+    echo "  Created $tmpl from template"
+  fi
+done
+
+# Prompt for git identity if template placeholders are still present
+GITCONFIG_LOCAL="$DOTFILES_DIR/git/gitconfig_local"
+if grep -q "YOUR_NAME" "$GITCONFIG_LOCAL" 2>/dev/null; then
+  echo ""
+  printf "Git user name: "
+  read -r GIT_NAME
+  printf "Git email: "
+  read -r GIT_EMAIL
+  sed -i '' "s/YOUR_NAME/$GIT_NAME/" "$GITCONFIG_LOCAL"
+  sed -i '' "s/YOUR_EMAIL/$GIT_EMAIL/" "$GITCONFIG_LOCAL"
+  echo "  Updated git/gitconfig_local"
+fi
+
+# Optionally clone private dotfiles repo (work configs)
+echo ""
+printf "Clone private dotfiles repo (work configs)? (y/N): "
+read -r WANT_PRIVATE
+if [[ "$WANT_PRIVATE" =~ ^[Yy]$ ]]; then
+  printf "Private repo URL (e.g. git@github.com:you/dotfiles-private.git): "
+  read -r PRIVATE_REPO
+  git clone "$PRIVATE_REPO" ~/.dotfiles-private
+  if [ -f ~/.dotfiles-private/install ]; then
+    echo "  Running private dotfiles install..."
+    cd ~/.dotfiles-private && ./install && cd "$DOTFILES_DIR"
+  fi
+fi
+
+# Run the main install
+echo ""
+echo "==> Running ./install ..."
+"$DOTFILES_DIR/install"
+
+echo ""
+echo "==> Done! Open a new shell to pick up all changes."
+echo "    Next: in a tmux session, press Prefix + I to install tmux plugins."

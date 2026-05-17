@@ -1,3 +1,9 @@
 .DS_Store
 *.swp
 log/*.log
+
+# Machine-local overrides — never commit these
+shell/zshrc_local
+git/gitconfig_local
+Brewfile.local
+install.local.yaml

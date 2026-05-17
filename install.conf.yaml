@@ -13,16 +13,23 @@
     # shell stuff
     ~/.aliases: shell/aliases
     ~/.zshrc: shell/zshrc
-    ~/.zshrc_local: shell/zshrc_local
+    ~/.zshrc_local:
+      path: shell/zshrc_local
+      ignore-missing: true
     ~/.zimrc: shell/zimrc
     ~/.p10k.zsh: shell/p10k.zsh
 
     # Brewfile
     ~/.config/Brewfile: Brewfile
+    ~/.config/Brewfile.local:
+      path: Brewfile.local
+      ignore-missing: true
 
     # git
     ~/.gitconfig: git/gitconfig
-    ~/.gitconfig_local: git/gitconfig_local
+    ~/.gitconfig_local:
+      path: git/gitconfig_local
+      ignore-missing: true
     ~/.git/git-editor: git/git-editor.sh
     ~/.git/git-clone-bare-for-worktrees.sh: git/git-clone-bare-for-worktrees.sh
     "~/Library/Application Support/lazygit/config.yml": git/lazygit.config.yml
@@ -43,11 +50,18 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-  - 
+  -
     command: brew bundle --describe --file ~/.config/Brewfile
     stdout: true
     description: brew install from Brewfile
-  - 
+  -
+    command: '[ -f ~/.config/Brewfile.local ] && brew bundle --file ~/.config/Brewfile.local || true'
+    stdout: true
+    description: brew install from Brewfile.local (if present)
+  -
     command: git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     stdout: true
     description: Install Tmux Plugin Manager (tpm)
+  -
+    command: '[ -f install.local.yaml ] && ./install -c install.local.yaml || true'
+    description: run local install overrides (if present)
