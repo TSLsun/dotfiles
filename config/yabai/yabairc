@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+# Default layout (can be bsp, stack or float)
+#   - bsp (Binary Space Partitioning)
+yabai -m config layout stack
+
+# padding set to 8px
+yabai -m config top_padding 8
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_gap 8
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+### Mouse
+# center mouse on window with focus
+yabai -m config mouse_follows_focus off
+
+# modifier for clicking and dragging with mouse
+yabai -m config mouse_modifier alt
+# set modifier + left-click drag to move window
+yabai -m config mouse_action1 move
+# set modifier + right-click drag to resize window
+yabai -m config mouse_action2 resize
+
+# when window is dropped in center of another window, swap them (on edges it will split it)
+yabai -m config mouse_drop_action swap
+
+### Apps to not manage (ignore)
+app_titles="(Copy|Move|Bin|About This Mac|Info|Finder Preferences|Preferences"
+app_titles+="|QuickTime Player)"
+yabai -m rule --add title="${app_titles}" manage=off
+
+app_names="^(System Preferences|Activity Monitor|Calculator|Notes|Preview"
+app_names+="|Archive Utility|Spotify)$"
+yabai -m rule --add app="${app_names}" manage=off
+

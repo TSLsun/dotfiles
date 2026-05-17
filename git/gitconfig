@@ -1,4 +1,5 @@
 [core]
+    editor = "$HOME/.git/git-editor"
     pager = delta
 
 [interactive]
