@@ -1,0 +1,9 @@
+# Machine-specific Homebrew packages
+# Copy this file to Brewfile.local and uncomment what you need.
+# Brewfile.local is gitignored — never committed.
+
+# brew "openjdk@21"
+
+# cask "docker"
+# cask "zoom"
+# cask "microsoft-teams"

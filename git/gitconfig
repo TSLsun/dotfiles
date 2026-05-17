@@ -21,3 +21,6 @@
 
 [include]
     path = ~/.gitconfig_local
+
+[include]
+    path = ~/.gitconfig_work
