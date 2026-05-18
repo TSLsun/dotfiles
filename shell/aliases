@@ -47,4 +47,5 @@ alias g++='/usr/local/bin/g++-12 -std=c++17'
 alias kick='cd ~/projects/cpp_practices/google_kickout'
 
 alias c='claude'
-alias cav='claude agents'
+alias ca='claude agents'
+alias cct='claude --channels plugin:telegram@claude-plugins-official'
