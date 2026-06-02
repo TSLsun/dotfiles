@@ -12,6 +12,9 @@ export PATH="$BREW_PREFIX/bin:$PATH"
 ### autojump
 [ -f "$BREW_PREFIX/etc/profile.d/autojump.sh" ] && . "$BREW_PREFIX/etc/profile.d/autojump.sh"
 
+### zoxide
+command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+
 ### nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$BREW_PREFIX/opt/nvm/nvm.sh"
