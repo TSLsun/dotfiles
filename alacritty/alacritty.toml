@@ -37,6 +37,7 @@ save_to_clipboard = true
 semantic_escape_chars = ''',│`|:"' ()[]{}<>	'''
 
 [window]
+option_as_alt = "Both"
 decorations = "buttonless"
 dynamic_padding = false
 opacity = 0.87
