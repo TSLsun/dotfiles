@@ -6,6 +6,14 @@
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
   fi
 
+### Load .aliases
+source ~/.aliases
+
+### Load local specific configs
+if [ -f ~/.zshrc_local  ]; then
+  source ~/.zshrc_local
+fi
+
 ### Start configuration added by Zim install {{{
 
 # -----------------
@@ -116,6 +124,12 @@ fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
+# Claude Code sessions: zim git aliases shadow real CLIs (gh = GitHub CLI, gws = Google Workspace CLI).
+# Drop them only when running under Claude Code; interactive shells keep the git shortcuts.
+if [[ -n $CLAUDECODE ]]; then
+  unalias gh gws 2>/dev/null
+fi
+
 # ------------------------------
 # Post-init module configuration
 # ------------------------------
@@ -133,14 +147,6 @@ for key ('j') bindkey -M vicmd ${key} history-substring-search-down
 unset key
 
 ### }}} End configuration added by Zim
-
-### Load .aliases
-source ~/.aliases
-
-### Load local specific configs
-if [ -f ~/.zshrc_local  ]; then
-  source ~/.zshrc_local
-fi
 
 ### lazygit
 # If you change repos in lazygit and want your shell to change directory into that repo on exiting lazygit
