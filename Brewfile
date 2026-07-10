@@ -6,6 +6,8 @@ brew "python@3.13"
 brew "autojump"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Manage your dotfiles across multiple machines, securely
+brew "chezmoi"
 # Reimplementation of ctags(1)
 brew "ctags"
 # More intuitive version of du in rust
