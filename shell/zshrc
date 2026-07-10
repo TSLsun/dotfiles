@@ -124,11 +124,9 @@ fi
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
-# Claude Code sessions: zim git aliases shadow real CLIs (gh = GitHub CLI, gws = Google Workspace CLI).
-# Drop them only when running under Claude Code; interactive shells keep the git shortcuts.
-if [[ -n $CLAUDECODE ]]; then
-  unalias gh gws 2>/dev/null
-fi
+# zim's git module aliases gh/gws to git shortcuts, shadowing the real CLIs
+# (gh = GitHub CLI, gws = Google Workspace CLI). Drop them in every shell.
+unalias gh gws 2>/dev/null
 
 # ------------------------------
 # Post-init module configuration
