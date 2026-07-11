@@ -50,9 +50,9 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   -
-    command: brew bundle --no-upgrade --describe --file ~/.config/Brewfile
+    command: ./shell/brew-bundle.sh
     stdout: true
-    description: brew install from Brewfile (missing packages only)
+    description: brew install from Brewfile (only if changed)
   -
     command: '[ -f Brewfile.local ] && brew bundle --no-upgrade --file Brewfile.local || true'
     stdout: true
