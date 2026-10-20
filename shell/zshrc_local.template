@@ -15,10 +15,25 @@ export PATH="$BREW_PREFIX/bin:$PATH"
 ### zoxide
 command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
-### nvm
+### nvm (lazy-loaded — prevents early compinit that conflicts with zimfw;
+### helper has no leading underscore so Claude Code shell snapshots keep it)
 export NVM_DIR="$HOME/.nvm"
-[ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$BREW_PREFIX/opt/nvm/nvm.sh"
-[ -s "$BREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$BREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm"
+lazy_nvm_load() {
+  unset -f nvm node npm npx lazy_nvm_load
+  [ -s "$BREW_PREFIX/opt/nvm/nvm.sh" ] && . "$BREW_PREFIX/opt/nvm/nvm.sh"
+}
+nvm()  { lazy_nvm_load; nvm  "$@"; }
+node() { lazy_nvm_load; node "$@"; }
+npm()  { lazy_nvm_load; npm  "$@"; }
+npx()  { lazy_nvm_load; npx  "$@"; }
+# newest installed node on PATH so `#!/usr/bin/env node` scripts work before nvm loads
+nvm_node_bin=($NVM_DIR/versions/node/v*/bin(NnOn[1]))
+[ -n "$nvm_node_bin" ] && export PATH="$nvm_node_bin:$PATH"
+unset nvm_node_bin
+
+### gws (@googleworkspace/cli) — install with
+### `npm install -g --prefix ~/.npm-global @googleworkspace/cli` so it's a plain $PATH binary
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 ### Java (uncomment and set your version)
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-18.jdk/Contents/Home
