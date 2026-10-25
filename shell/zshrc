@@ -121,6 +121,8 @@ fi
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
+# collie completions (must precede compinit in zim's init.zsh)
+fpath+=(~/.tmux/plugins/tmux-collie/completions)
 # Initialize modules.
 source ${ZIM_HOME}/init.zsh
 
