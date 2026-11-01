@@ -36,6 +36,8 @@ brew "nvm"
 brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# CLI proxy that condenses command output for AI agents
+brew "rtk"
 # Terminal multiplexer
 brew "tmux"
 # Vi 'workalike' with many additional features
